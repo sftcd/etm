@@ -187,27 +187,34 @@ in-network adversaries.
 
 In this document, we argue that we need to epxand our threat model to
 acknowledge that today many applications are themselves rightly considered
-potential adversaries for at least some relevant actors. We also argue that
-not recognising this reality causes Internet protocol designs to sometimes
-fail to protect the systems and users who depend on those.
+potential adversaries for at least some relevant actors. However, those (good)
+actors cannot in general refuse to communicate and will with non-negligible
+probability encounter applications that are adversarial.  
+
+We also argue that not recognising this reality causes Internet protocol
+designs to sometimes fail to protect the systems and users who depend on those.
 
 Discussion related to expanding our concept of threat-model ought not (but
 perhaps inevitably will) involve discussion of weakening how confidentiality is
 provided in Internet protocols. Whilst it may superficially seem to be the case
-that allowing in-network interception could allow detection of adversarial
-application behaviours, such a position is clearly mistaken once one notes that
-adding middleboxes that can themselves be adverserial cannot be a solution for
-adversarial code. It is also the case that the IETF has consensus on
-this topic, as noted in [@?RFC2404] and BCP 200 [@?RFC1984].
+that encouraging in-network interception could help with detection of
+adversarial application behaviours, such a position is clearly mistaken once
+one notes that adding middleboxes that can themselves be adverserial cannot be
+a solution to the problem of possibly encountering adversarial code on the
+network.  It is also the case that the IETF has rough consensus to provide
+better, and not weaker, securty and privacy, and has maintained that consensus
+over three decades, despite repeated (and repetitive;-) debates on the topic.
+That consensus is represented in [@?RFC2404], BCP 200 [@?RFC1984] and more
+latterly, the above-mentioned BCP 188 as well as in the numerous RFCs
+referencing those works.  The probability that discussion of expanding our
+threat model leads to a change in that rough consensus seems highly remote.
 
-It is unclear whether or not the IETF can be expected to reach rough consensus
-on a description of such a new threat model, but we further argue that ignoring
-this aspect of deployed reality cannot may not bode well for Internet protocol
-development.
+It is not clear if the IETF will reach rough consensus on a description of such
+an expanded threat model, but we further argue that ignoring this aspect of
+deployed reality cannot may not bode well for Internet protocol development.
 
-Absent such an expanded threat
-model, we expect to see a continued mismatch between expectaions and the
-deployment reality for some Internet protocols. 
+Absent such an expanded threat model, we expect to see more of a mismatch
+between expectaions and the deployment reality for some Internet protocols. 
 
 This internet-draft is a submission to the IAB's DEDR
 [workshop](https://www.iab.org/activities/workshops/dedr-workshop/) and is not
@@ -224,15 +231,20 @@ adversarial behaviours described below involve various kinds of attack, varying
 from simlple fraud, to credential theft, surveillance and contributing to DDoS
 attacks.  This is not intended to be a comprehensive nor complete survey, but
 to motivate us to consider deliberate adversarial behaviour by applicaions.
+
 Finally, we note that while we have these examples of deliberate adversarial
-behaviour, there are also many example of applciations deveopers doing their
-best to protect the security and privacy of their users or customers.
+behaviour, there are also many examples of applciation developers doing their
+best to protect the security and privacy of their users or customers. That's
+just the same as the case today where we need to consider in-network actors
+as potential adversaries despite the many examples of network operators who
+do act primarily in the best interests of their users.
 
 ## Malware in curated application stores
 
-Despite the best efforts of curators, so-called AppStores have frequently been
-(ab)used to distribute malware of many kinds and one recent study [@?curated]
-claims that simple obfuscation enables malware to avoid detection. Given the
+Despite the best efforts of curators, so-called App-Stores frequently 
+distribute malware of many kinds and one recent study [@?curated]
+claims that simple obfuscation enables malware to avoid detection by
+even sophisticated operators. Given the
 scale of these deployments, even a small percentage of malware-infected
 applictions can affect a huge numbers of people.
 
@@ -241,16 +253,17 @@ applictions can affect a huge numbers of people.
 Virtual private networks (VPNs) are supposed to hide user traffic to various
 degrees depending on the particular technology chosen by the VPN provider.
 However, not all VPNs do what they say, some for example misrepresenting the
-countries in which they provide vantage points. [@?vpns]
+countries in which they provide vantage points. [@?vpns] 
 
 ## Compromised (home) networks
 
-What we normally might consider networking appliances do also run applications
-that can end up being adversarial, for example DNS and DHCP attacks from home
-routers, or other devices in the home. One study [home] reports on a 2011
-attack that affected 4.5 million DSL modems in Brazil.  The absence of software
-update [@?RFC8240] has been a major cause of these issues and rises to the
-level that considering this as intentional behaviour is warranted.
+What we normally might consider network devices such a home routers do also run
+applications that can end up being adversarial, for example DNS and DHCP
+attacks from home routers, or other devices in the home. One study [home]
+reports on a 2011 attack that affected 4.5 million DSL modems in Brazil.  The
+absence of software update [@?RFC8240] has been a major cause of these issues
+and rises to the level that considering allowing this as intentional behaviour is
+warranted.
 
 ## Web browsers
 
@@ -258,49 +271,47 @@ Tracking of users in order to support advertising based business models is
 ubiquitous on the Internet today.  HTTP header fields (such as cookies) are
 commonly used for such tracking, as are structures within the content of HTTP
 responses such as links to 1x1 pixel images and (ab)use of Javascript APIs
-offered by browsers.  [@?tracking] 
+offered by browsers. [@?tracking] 
 
-While some web users may be sanguine about this kind of tracking in some
-contexts, other users consider this behaviour unwelcome, when or if they are
-informed that it happens, [attitude] though the evidence here seems somewhat
-harder to interpret and many studies (that we have found to date) involve small
-numbers of users.  Historically, browsers have not made this kind of tracking
-visible and have supported it by default, though some recent browser versions
-are starting to enable visibility and blocking of tracking. Browsers are also
-increasingly imposing more stringent requirements on plug-ins for security
-reasons. 
+While some people may be sanguine about this kind of tracking, others consider
+this behaviour unwelcome, when or if they are informed that it happens,
+[attitude] though the evidence here seems somewhat harder to interpret and many
+studies (that we have found to date) involve small numbers of users.
+Historically, browsers have not made this kind of tracking visible and have
+enabled it by default, though some recent browser versions are starting to
+enable visibility and blocking of some kinds of tracking. Browsers are also increasingly
+imposing more stringent requirements on plug-ins for varied security reasons. 
 
-## Web sites
+## Web site policy deception
 
 Many web sites today provide some form of privacy policy and terms of service,
-that are mostly unread. [@?unread] This implies that, legal fiction aside,
-users of those sites have not in reality agreed to the specific terms published
-and so users are therefore highly exposed to being exploited by web sites, for
-example [@?cambridge] is a recent well-publicised case where a service provider
-abused the data of 87 million users via a partnership.  While many web site
-operators claim that they care deeply about privacy, it seems prudent to assume
-that some do not in fact care about user privacy, or at least not in ways with
-which many of their users would agree. And of course, today's web sites are
-actually mostly fairly complex web applications and are no longer static sets
-of HTML files, so calling these "web sites" is perhaps a misnomer, but
-considered as web applications, it seems clear that many such exist that are
-adversarial.
+that are known to be mostly unread. [@?unread] This implies that, legal fiction
+aside, users of those sites have not in reality agreed to the specific terms
+published and so users are therefore highly exposed to being exploited by web
+sites, for example [@?cambridge] is a recent well-publicised case where a
+service provider abused the data of 87 million users via a partnership.  While
+many web site operators claim that they care deeply about privacy, it seems
+prudent to assume that some (or most?) do not in fact care about user privacy,
+or at least not in ways with which many of their users would agree. And of
+course, today's web sites are actually mostly fairly complex web applications
+and are no longer static sets of HTML files, so calling these "web sites" is
+perhaps a misnomer, but considered as web applications, it seems clear that
+many exist that are adversarial.
 
 ## Tracking bugs in mail
 
-Some mail user agents (MUAs) render HTML content by default (some not allowing
-this to be turned off, perhaps particularly MUAs on mobile devices) and thus
-enable the same kind of adversarial tracking as is seen on the web. Such
-intentional tracking is also seen many times per day by email users - in one
-study [@?mailbug] the authors estimated that 62% of PII leakage to third
+Some mail user agents (MUAs) render HTML content by default (with a subset not
+allowing that to be turned off, perhaps particularly on mobile devices) and
+thus enable the same kind of adversarial tracking seen on the web. Attempts at
+such intentional tracking are also seen many times per day by email users - in
+one study [@?mailbug] the authors estimated that 62% of leakage to third
 parties was intentional, for example if leaked data included a hash of the
 recipient email address. 
 
 ## Smart televisions
 
 There have been examples of so-called "smart" televisions spying on their
-owners [without
-permission](https://www.welivesecurity.com/2013/11/22/lg-admits-that-its-smart-tvs-have-been-watching-users-and-transmitting-data-without-consent/)
+owners [without permission](https://www.welivesecurity.com/2013/11/22/lg-admits-that-its-smart-tvs-have-been-watching-users-and-transmitting-data-without-consent/)
 and one survey of user attitudes [@?smarttv] found "broad agreement was that it
 is unacceptable for the data to be repurposed or shared" although the level of
 user understanding may be questionable.  What is clear though is that such
@@ -310,37 +321,42 @@ such data.
 
 ## So-called Internet of things
 
-Many so-called Internet of Things (IoT) devices ("so-called" since all devices
+Many so-called Internet of Things (IoT) devices ("so-called" as all devices
 were already things:-) have been found extremely deficient when their security
 and privacy aspects were analysed, for example children's toys. [@?toys] While
-in some cases this may be due to incompetence rather than deliberate, the
-levels of incompetence frequently seen imply that it is valid to consider such
-cases as not being accidental.
+in some cases this may be due to incompetence rather than being deliberately
+adversarial behaviour, the levels of incompetence frequently seen imply that it
+is valid to consider such cases as not being accidental.
 
 # Inadvertent adversarial behaviours
 
 Not all adversarial behaviour by applications is deliberate, some is likely due
-to carelessness and/or due to erroneous assumptions about the environments in
-which applications (now) run.  For the sake of brevity, we simply list some
-such cases:
+to various levels of carelessness (some quite understandable, others not)
+and/or due to erroneous assumptions about the environments in which those
+applications (now) run.  We very breifly list some such cases:
 
-- Application abuse for command and control, for example,
-use of IRC or apache logs for [malware command and control](https://security.stackexchange.com/questions/100577/creating-botnet-cc-server-what-architecture-should-i-use-irc-http)
+- Application abuse for command and control, for example, use of IRC or apache
+  logs for [malware command and
+control](https://security.stackexchange.com/questions/100577/creating-botnet-cc-server-what-architecture-should-i-use-irc-http)
 
-- Carelessly [leaky buckets](https://businessinsights.bitdefender.com/worst-amazon-breaches), for
+- Carelessly [leaky
+  buckets](https://businessinsights.bitdefender.com/worst-amazon-breaches), for
 example, lots of Amazon S3 leaks showing that careless admins can too easily
 cause application server data to become available to adversaries
 
-- Virtualisation exposing secrets, for example [Meltdown and Spectre](https://www.us-cert.gov/ncas/alerts/TA18-004A)
-and similar side-channels 
+- Virtualisation exposing secrets, for example [Meltdown and
+  Spectre](https://www.us-cert.gov/ncas/alerts/TA18-004A) and similar
+side-channels 
 
-- Compromised badly-maintained web sites, for example that
-have lead to massive online [databases of passwords](https://haveibeenpwned.com/Passwords)
+- Compromised badly-maintained web sites, for example that have lead to massive
+  online [databases of passwords](https://haveibeenpwned.com/Passwords)
 
-- Supply-chain attacks, for example the [Target attack](https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/) 
+- Supply-chain attacks, for example the [Target
+  attack](https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/) 
 
-- Breaches of major service providers, that many of us might have assumed would be
-sufficiently capable to be the best large-scale "Identity providers", for example:
+- Breaches of major service providers, that many of us might have assumed would
+  be sufficiently capable to be the best large-scale "Identity providers", for
+example:
     - 3 billion accounts: [yahoo](https://www.wired.com/story/yahoo-breach-three-billion-accounts/) 
     - many millions at risk: [telcos selling location data](https://www.zdnet.com/article/us-telcos-caught-selling-your-location-data-again-senator-demands-new-laws/)
     - 50 million accounts: [facebook](https://www.cnet.com/news/facebook-breach-affected-50-million-people/)
@@ -352,9 +368,10 @@ sufficiently capable to be the best large-scale "Identity providers", for exampl
 
 # Possible directions for an expanded threat model
 
-We don't claim to have any definitive solutions or answers but
-simply call out some potential directions that could be 
-explored at the DEDR workshop and thereafter.
+As we believe useful conclusions in this space require community consensus,
+we won't offer definitive descriptions of an expanded threat model
+but we will call out some potential directions that could be explored at the
+DEDR workshop and thereafter, if there is interest in this topic.
 
 ## Develop a BCP for privacy considerations
 
@@ -365,89 +382,81 @@ considerations, possibly starting from [@?RFC6973].
 
 [@?I-D.nottingham-for-the-users] argues that, in relevant cases where there are
 conflicting requirements, the "IETF considers end users as its highest priority
-concern." It seems that doing so is consistent with the 
-expanded threat model being argued for here.
+concern." Doing so seems consistent with the expanded threat model being argued
+for here, so may indicate that a BCP in that space could also be useful.
 
 ## Consider ABuse-cases as well as use-cases
 
-Protocol developers and those implementing and deploying Internet
-technologies are typically most interested in a few specific
-use-cases for which they need solutions. Expanding our threat
-model to include adversarial application behaviours [abusecases] seems likely
-to call for significant attention to be paid to potential
-abuses of whatever new or re-purposed technology is being
+Protocol developers and those implementing and deploying Internet technologies
+are typically most interested in a few specific use-cases for which they need
+solutions. Expanding our threat model to include adversarial application
+behaviours [abusecases] seems likely to call for significant attention to be
+paid to potential abuses of whatever new or re-purposed technology is being
 considered. 
 
-Protocol extensibility mechanisms may constitute a
-particular vector for abuse-cases, given that designers
-cannot fully analyse their impact at the time a new
-protocol is defined or standardised. One might consider then that 
-a lack of extensibility could be a virtue for some
-new protocols, in contrast to earlier assumptions.
+## Re-consider protocol design "lore"
+
+If could be that this discussion demonstrates that it is timely to reconsider
+some protocol design "lore." [@?I-D.iab-protocol-maintenance] For example,
+protocol extensibility mechanisms may inadvertently create vectors for
+abuse-cases, given that designers cannot fully analyse their impact at the time
+a new protocol is defined or standardised. One might conclude that a lack of
+extensibility could be a virtue for some new protocols, in contrast to earlier
+assumptions.
 
 ## Isolation
 
-Sophisticated users can deal with some potentially adversarial behaviours in
-client applications by using different instances of such applications, for
-example, differently configured web browsers for use in different contexts.
-Applications (including web browsers) and operating systems are also
-building in isolation via use of different processes or sandboxing.  
-Protocol artefacts that relate to uses of such isolation
-mechanisms might be worth considering.
-
-To an extent, the IETF has already recognised some of these issues as being
-in-scope, e.g.  when considering the linkability issues with mechanisms such as
-TLS session tickets, or QUIC connection identifiers.
+Sophisticated users can deal with some adversarial behaviours in applications
+by using different instances of those applications, for example, differently
+configured web browsers for use in different contexts.  Applications (including
+web browsers) and operating systems are also building in isolation via use of
+different processes or sandboxing.  Protocol artefacts that relate to uses of
+such isolation mechanisms might be worth considering.  To an extent, the IETF
+has in practice already recognised some of these issues as being in-scope, e.g.
+when considering the linkability issues with mechanisms such as TLS session
+tickets, or QUIC connection identifiers.
 
 ## Minimise
 
-As recommended in [@?RFC6973] data minimisation and 
-additional encryption are likely
-to be helpful - if applications don't ever see data,
-or a cleartext form of data, then they should have a
-harder time misbehaving. Similarly, not adding new
-long-term identifiers, and not exposing existing ones,
-would seem helpful.
+As recommended in [@?RFC6973] data minimisation and additional encryption are
+likely to be helpful - if applications don't ever see data, or a cleartext form
+of data, then they should have a harder time misbehaving. Similarly, not adding
+new long-term identifiers, and not exposing existing ones, would seem helpful.
 
 ## Transparency
 
-Certificate transparency (CT) [@?RFC6962] has been an effective
-countermeasure for X.509 certificate mis-issuance, which is
-a known application layer misbehaviour. While the context
-in which CT operates is very constrained (essentially to the public CAs
-trusted by web browsers), similar approaches could be
-useful for other protocols or technologies.
+Certificate transparency (CT) [@?RFC6962] has been an effective countermeasure
+for X.509 certificate mis-issuance, which used be a known application layer
+misbehaviour in the public web PKI. While the context in which CT operates is
+very constrained (essentially to the public CAs trusted by web browsers),
+similar approaches could be useful for other protocols or technologies.
 
-In addition, legislative requirements such as those
-imposed by the GDPR for [subject access to data](https://gdpr-info.eu/art-15-gdpr/) 
-could lead to a desire to handle internal data structures
-and databases in ways that are reminiscent of 
-CT, though clearly with signifnant authorisation 
-being required and without the append-only nature
-of a CT log.
+In addition, legislative requirements such as those imposed by the GDPR for
+[subject access to data](https://gdpr-info.eu/art-15-gdpr/) could lead to a
+desire to handle internal data structures and databases in ways that are
+reminiscent of CT, though clearly with signifnant authorisation being required
+and without the append-only nature of a CT log.
 
 ## Same-Origin Policy
 
 The Same-Origin Policy (SOP) [@?RFC6454] may provide an example of
-how going beyond the RFC 3552 threat model can be useful. 
+how going beyond the RFC 3552 threat model can be useful. Arguably,
+the existence of the SOP demonstrates that at least web browsers
+already consider the 3552-model as being too limited. 
 
 ## Greasing
 
-The TLS protocol [@?RFC8446] now supports the use of
-GREASE [@?I-D.ietf-tls-grease] as a way to mitigate
-on-path ossification. While this technique is not
-likely to prevent any deliberate misbehaviours, it
-may demonstrate that network protocol
-mechanisms can have impact in this space, if we 
-spend the time to try analyse the incentives of the
-various parties.
+The TLS protocol [@?RFC8446] now supports the use of GREASE [@?I-D.ietf-tls-grease] 
+as a way to mitigate on-path ossification. While this technique is not likely
+to prevent any deliberate misbehaviours, it may provide a proof-of-concept that
+network protocol mechanisms can have impact in this space, if we spend the time
+to try analyse the incentives of the various parties.
 
 # Conclusions
 
-At this stage we don't think it approriate to claim that any
-strong conclusion can be reached based on the above. We do
-however, claim that the is a topic that could be worth 
-discussion at the DEDR workshop and elsewhere.
+At this stage we don't think it approriate to claim that any strong conclusion
+can be reached based on the above. We do however, claim that the is a topic
+that could be worth discussion at the DEDR workshop and elsewhere.
 
 # Security Considerations
 
