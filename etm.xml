@@ -27,7 +27,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="April" day="20"/>
+<date year="2019" month="April" day="22"/>
 
 <area>Network Working Group</area>
 <workgroup></workgroup>
@@ -88,7 +88,7 @@ this topic, as noted in <xref target="RFC2404"/> and BCP 200 <xref target="RFC19
 </t>
 <t>It is unclear whether or not the IETF can be expected to reach rough consensus
 on a description of such a new threat model, but we further argue that ignoring
-this aspect of deployed reality cannot may not well for Internet protocol
+this aspect of deployed reality cannot may not bode well for Internet protocol
 development.
 </t>
 <t>Absent such an expanded threat
@@ -331,7 +331,7 @@ of a CT log.
 </section>
 
 <section anchor="sameorigin-policy" title="Same-Origin Policy">
-<t>The Same-Origin Policy (SOP) [?@RFC6464] may provide an example of
+<t>The Same-Origin Policy (SOP) <xref target="RFC6454"/> may provide an example of
 how going beyond the RFC 3552 threat model can be useful.
 </t>
 </section>
@@ -377,8 +377,10 @@ exploitation harder or more transparent for adversarial applications.
 </section>
 
 <section anchor="acknowledgements" title="Acknowledgements">
-<t>We'll happily ack anyone who's interested enough to read
-and comment on this.
+<t>We'll happily ack anyone who's interested enough to read and comment on this.
+With no implication that they agree with some or all of the above, thanks to
+Christian Huitema and Daniel Kahn Gillmor for comments on an earlier version of
+the text.
 </t>
 </section>
 
@@ -390,6 +392,7 @@ and comment on this.
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1984.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2404.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3552.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6454.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6962.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7258.xml"?>

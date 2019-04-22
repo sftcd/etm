@@ -202,7 +202,7 @@ this topic, as noted in [@?RFC2404] and BCP 200 [@?RFC1984].
 
 It is unclear whether or not the IETF can be expected to reach rough consensus
 on a description of such a new threat model, but we further argue that ignoring
-this aspect of deployed reality cannot may not well for Internet protocol
+this aspect of deployed reality cannot may not bode well for Internet protocol
 development.
 
 Absent such an expanded threat
@@ -428,7 +428,7 @@ of a CT log.
 
 ## Same-Origin Policy
 
-The Same-Origin Policy (SOP) [?@RFC6464] may provide an example of
+The Same-Origin Policy (SOP) [@?RFC6454] may provide an example of
 how going beyond the RFC 3552 threat model can be useful. 
 
 ## Greasing
@@ -468,8 +468,10 @@ There are no IANA considerations.
 
 # Acknowledgements
 
-We'll happily ack anyone who's interested enough to read
-and comment on this.
+We'll happily ack anyone who's interested enough to read and comment on this.
+With no implication that they agree with some or all of the above, thanks to
+Christian Huitema and Daniel Kahn Gillmor for comments on an earlier version of
+the text.
 
 
 

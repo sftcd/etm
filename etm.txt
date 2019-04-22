@@ -4,8 +4,8 @@
 
 Network Working Group                                         S. Farrell
 Internet-Draft                                    Trinity College Dublin
-Intended status: Informational                            April 20, 2019
-Expires: October 22, 2019
+Intended status: Informational                            April 22, 2019
+Expires: October 24, 2019
 
 
                  We're gonna need a bigger threat model
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 22, 2019.
+   This Internet-Draft will expire on October 24, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Farrell                 Expires October 22, 2019                [Page 1]
+Farrell                 Expires October 24, 2019                [Page 1]
 
 Internet-Draft                     etm                        April 2019
 
@@ -89,7 +89,7 @@ Table of Contents
    8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      9.1.  Informative References  . . . . . . . . . . . . . . . . .   9
-     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Farrell                 Expires October 22, 2019                [Page 2]
+Farrell                 Expires October 24, 2019                [Page 2]
 
 Internet-Draft                     etm                        April 2019
 
@@ -143,7 +143,7 @@ Internet-Draft                     etm                        April 2019
    It is unclear whether or not the IETF can be expected to reach rough
    consensus on a description of such a new threat model, but we further
    argue that ignoring this aspect of deployed reality cannot may not
-   well for Internet protocol development.
+   bode well for Internet protocol development.
 
    Absent such an expanded threat model, we expect to see a continued
    mismatch between expectaions and the deployment reality for some
@@ -165,7 +165,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 22, 2019                [Page 3]
+Farrell                 Expires October 24, 2019                [Page 3]
 
 Internet-Draft                     etm                        April 2019
 
@@ -221,7 +221,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 22, 2019                [Page 4]
+Farrell                 Expires October 24, 2019                [Page 4]
 
 Internet-Draft                     etm                        April 2019
 
@@ -277,7 +277,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 22, 2019                [Page 5]
+Farrell                 Expires October 24, 2019                [Page 5]
 
 Internet-Draft                     etm                        April 2019
 
@@ -333,7 +333,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 22, 2019                [Page 6]
+Farrell                 Expires October 24, 2019                [Page 6]
 
 Internet-Draft                     etm                        April 2019
 
@@ -389,7 +389,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 22, 2019                [Page 7]
+Farrell                 Expires October 24, 2019                [Page 7]
 
 Internet-Draft                     etm                        April 2019
 
@@ -424,8 +424,8 @@ Internet-Draft                     etm                        April 2019
 
 4.7.  Same-Origin Policy
 
-   The Same-Origin Policy (SOP) [?@RFC6464] may provide an example of
-   how going beyond the RFC 3552 threat model can be useful.
+   The Same-Origin Policy (SOP) [RFC6454] may provide an example of how
+   going beyond the RFC 3552 threat model can be useful.
 
 4.8.  Greasing
 
@@ -445,7 +445,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 22, 2019                [Page 8]
+Farrell                 Expires October 24, 2019                [Page 8]
 
 Internet-Draft                     etm                        April 2019
 
@@ -471,7 +471,9 @@ Internet-Draft                     etm                        April 2019
 8.  Acknowledgements
 
    We'll happily ack anyone who's interested enough to read and comment
-   on this.
+   on this.  With no implication that they agree with some or all of the
+   above, thanks to Christian Huitema and Daniel Kahn Gillmor for
+   comments on an earlier version of the text.
 
 9.  References
 
@@ -499,9 +501,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-
-
-Farrell                 Expires October 22, 2019                [Page 9]
+Farrell                 Expires October 24, 2019                [Page 9]
 
 Internet-Draft                     etm                        April 2019
 
@@ -533,6 +533,10 @@ Internet-Draft                     etm                        April 2019
               DOI 10.17487/RFC3552, July 2003,
               <https://www.rfc-editor.org/info/rfc3552>.
 
+   [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
+              DOI 10.17487/RFC6454, December 2011,
+              <https://www.rfc-editor.org/info/rfc6454>.
+
    [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
               <https://www.rfc-editor.org/info/rfc6962>.
@@ -547,20 +551,21 @@ Internet-Draft                     etm                        April 2019
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <https://www.rfc-editor.org/info/rfc7258>.
 
+
+
+
+
+
+
+Farrell                 Expires October 24, 2019               [Page 10]
+
+Internet-Draft                     etm                        April 2019
+
+
    [RFC8240]  Tschofenig, H. and S. Farrell, "Report from the Internet
               of Things Software Update (IoTSU) Workshop 2016",
               RFC 8240, DOI 10.17487/RFC8240, September 2017,
               <https://www.rfc-editor.org/info/rfc8240>.
-
-
-
-
-
-
-Farrell                 Expires October 22, 2019               [Page 10]
-
-Internet-Draft                     etm                        April 2019
-
 
    [RFC8404]  Moriarty, K., Ed. and A. Morton, Ed., "Effects of
               Pervasive Encryption on Operators", RFC 8404,
@@ -604,19 +609,20 @@ Internet-Draft                     etm                        April 2019
               <https://eprints.networks.imdea.org/1886/1/
               imc18-final198.pdf>.
 
+
+
+
+
+Farrell                 Expires October 24, 2019               [Page 11]
+
+Internet-Draft                     etm                        April 2019
+
+
 9.2.  URIs
 
    [1] https://datatracker.ietf.org/doc/rfc6973/referencedby/
 
    [2] https://datatracker.ietf.org/doc/rfc7258/referencedby/
-
-
-
-
-Farrell                 Expires October 22, 2019               [Page 11]
-
-Internet-Draft                     etm                        April 2019
-
 
    [3] https://www.iab.org/activities/workshops/dedr-workshop/
 
@@ -657,6 +663,17 @@ Internet-Draft                     etm                        April 2019
 
 Author's Address
 
+
+
+
+
+
+
+Farrell                 Expires October 24, 2019               [Page 12]
+
+Internet-Draft                     etm                        April 2019
+
+
    Stephen Farrell
    Trinity College Dublin
 
@@ -669,4 +686,43 @@ Author's Address
 
 
 
-Farrell                 Expires October 22, 2019               [Page 12]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Farrell                 Expires October 24, 2019               [Page 13]
