@@ -80,8 +80,8 @@ Table of Contents
      4.3.  Consider ABuse-cases as well as use-cases . . . . . . . .   7
      4.4.  Re-consider protocol design "lore"  . . . . . . . . . . .   8
      4.5.  Isolation . . . . . . . . . . . . . . . . . . . . . . . .   8
-     4.6.  Minimise  . . . . . . . . . . . . . . . . . . . . . . . .   8
-     4.7.  Transparency  . . . . . . . . . . . . . . . . . . . . . .   8
+     4.6.  Transparency  . . . . . . . . . . . . . . . . . . . . . .   8
+     4.7.  Minimise  . . . . . . . . . . . . . . . . . . . . . . . .   8
      4.8.  Same-Origin Policy  . . . . . . . . . . . . . . . . . . .   9
      4.9.  Greasing  . . . . . . . . . . . . . . . . . . . . . . . .   9
    5.  Conclusions . . . . . . . . . . . . . . . . . . . . . . . . .   9
@@ -399,14 +399,14 @@ Internet-Draft                     etm                        April 2019
 
 4.4.  Re-consider protocol design "lore"
 
-   If could be that this discussion demonstrates that it is timely to
-   reconsider some protocol design "lore."
-   [I-D.iab-protocol-maintenance] For example, protocol extensibility
-   mechanisms may inadvertently create vectors for abuse-cases, given
-   that designers cannot fully analyse their impact at the time a new
-   protocol is defined or standardised.  One might conclude that a lack
-   of extensibility could be a virtue for some new protocols, in
-   contrast to earlier assumptions.
+   It could be that this discussion demonstrates that it is timely to
+   reconsider some protocol design "lore" as for example is done in
+   [I-D.iab-protocol-maintenance].  More specifically, protocol
+   extensibility mechanisms may inadvertently create vectors for abuse-
+   cases, given that designers cannot fully analyse their impact at the
+   time a new protocol is defined or standardised.  One might conclude
+   that a lack of extensibility could be a virtue for some new
+   protocols, in contrast to earlier assumptions.
 
 4.5.  Isolation
 
@@ -422,15 +422,7 @@ Internet-Draft                     etm                        April 2019
    mechanisms such as TLS session tickets, or QUIC connection
    identifiers.
 
-4.6.  Minimise
-
-   As recommended in [RFC6973] data minimisation and additional
-   encryption are likely to be helpful - if applications don't ever see
-   data, or a cleartext form of data, then they should have a harder
-   time misbehaving.  Similarly, not adding new long-term identifiers,
-   and not exposing existing ones, would seem helpful.
-
-4.7.  Transparency
+4.6.  Transparency
 
    Certificate transparency (CT) [RFC6962] has been an effective
    countermeasure for X.509 certificate mis-issuance, which used be a
@@ -442,6 +434,14 @@ Internet-Draft                     etm                        April 2019
    In addition, legislative requirements such as those imposed by the
    GDPR for subject access to data [16] could lead to a desire to handle
    internal data structures and databases in ways that are reminiscent
+   of CT, though clearly with signifnant authorisation being required
+   and without the append-only nature of a CT log.
+
+4.7.  Minimise
+
+   As recommended in [RFC6973] data minimisation and additional
+   encryption are likely to be helpful - if applications don't ever see
+   data, or a cleartext form of data, then they should have a harder
 
 
 
@@ -450,15 +450,18 @@ Farrell                 Expires October 25, 2019                [Page 8]
 Internet-Draft                     etm                        April 2019
 
 
-   of CT, though clearly with signifnant authorisation being required
-   and without the append-only nature of a CT log.
+   time misbehaving.  Similarly, not adding new long-term identifiers,
+   and not exposing existing ones, would seem helpful.
 
 4.8.  Same-Origin Policy
 
-   The Same-Origin Policy (SOP) [RFC6454] may provide an example of how
-   going beyond the RFC 3552 threat model can be useful.  Arguably, the
-   existence of the SOP demonstrates that at least web browsers already
-   consider the 3552-model as being too limited.
+   The Same-Origin Policy (SOP) [RFC6454] perhaps already provides an
+   example of how going beyond the RFC 3552 threat model can be useful.
+   Arguably, the existence of the SOP demonstrates that at least web
+   browsers already consider the 3552 model as being too limited.
+   (Clearly, differentiating between same and not-same origins
+   implicitly assumes that some origins are not as trustworthy as
+   others.)
 
 4.9.  Greasing
 
@@ -493,9 +496,6 @@ Internet-Draft                     etm                        April 2019
 7.  IANA Considerations
 
    There are no IANA considerations.
-
-
-
 
 
 

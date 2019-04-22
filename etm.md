@@ -396,13 +396,13 @@ considered.
 
 ## Re-consider protocol design "lore"
 
-If could be that this discussion demonstrates that it is timely to reconsider
-some protocol design "lore." [@?I-D.iab-protocol-maintenance] For example,
-protocol extensibility mechanisms may inadvertently create vectors for
-abuse-cases, given that designers cannot fully analyse their impact at the time
-a new protocol is defined or standardised. One might conclude that a lack of
-extensibility could be a virtue for some new protocols, in contrast to earlier
-assumptions.
+It could be that this discussion demonstrates that it is timely to reconsider
+some protocol design "lore" as for example is done in
+[@?I-D.iab-protocol-maintenance]. More specifically, protocol extensibility
+mechanisms may inadvertently create vectors for abuse-cases, given that
+designers cannot fully analyse their impact at the time a new protocol is
+defined or standardised. One might conclude that a lack of extensibility could
+be a virtue for some new protocols, in contrast to earlier assumptions.
 
 ## Isolation
 
@@ -415,13 +415,6 @@ such isolation mechanisms might be worth considering.  To an extent, the IETF
 has in practice already recognised some of these issues as being in-scope, e.g.
 when considering the linkability issues with mechanisms such as TLS session
 tickets, or QUIC connection identifiers.
-
-## Minimise
-
-As recommended in [@?RFC6973] data minimisation and additional encryption are
-likely to be helpful - if applications don't ever see data, or a cleartext form
-of data, then they should have a harder time misbehaving. Similarly, not adding
-new long-term identifiers, and not exposing existing ones, would seem helpful.
 
 ## Transparency
 
@@ -437,12 +430,21 @@ desire to handle internal data structures and databases in ways that are
 reminiscent of CT, though clearly with signifnant authorisation being required
 and without the append-only nature of a CT log.
 
+## Minimise
+
+As recommended in [@?RFC6973] data minimisation and additional encryption are
+likely to be helpful - if applications don't ever see data, or a cleartext form
+of data, then they should have a harder time misbehaving. Similarly, not adding
+new long-term identifiers, and not exposing existing ones, would seem helpful.
+
 ## Same-Origin Policy
 
-The Same-Origin Policy (SOP) [@?RFC6454] may provide an example of
-how going beyond the RFC 3552 threat model can be useful. Arguably,
-the existence of the SOP demonstrates that at least web browsers
-already consider the 3552-model as being too limited. 
+The Same-Origin Policy (SOP) [@?RFC6454] perhaps already provides an example of
+how going beyond the RFC 3552 threat model can be useful. Arguably, the
+existence of the SOP demonstrates that at least web browsers already consider
+the 3552 model as being too limited. (Clearly, differentiating between 
+same and not-same origins implicitly assumes that some origins are not
+as trustworthy as others.)
 
 ## Greasing
 
