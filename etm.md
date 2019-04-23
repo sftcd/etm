@@ -231,10 +231,10 @@ behaviour by applications that could affect Internet protocol development.  The
 adversarial behaviours described below involve various kinds of attack, varying
 from simple fraud, to credential theft, surveillance and contributing to DDoS
 attacks.  This is not intended to be a comprehensive nor complete survey, but
-to motivate us to consider deliberate adversarial behaviour by applicaions.
+to motivate us to consider deliberate adversarial behaviour by applications.
 
 Finally, we note that while we have these examples of deliberate adversarial
-behaviour, there are also many examples of applciation developers doing their
+behaviour, there are also many examples of application developers doing their
 best to protect the security and privacy of their users or customers. That's
 just the same as the case today where we need to consider in-network actors
 as potential adversaries despite the many examples of network operators who
@@ -258,7 +258,7 @@ countries in which they provide vantage points. [@?vpns]
 
 ## Compromised (home) networks
 
-What we normally might consider network devices such a home routers do also run
+What we normally might consider network devices such as home routers do also run
 applications that can end up being adversarial, for example DNS and DHCP
 attacks from home routers, or other devices in the home. One study [home]
 reports on a 2011 attack that affected 4.5 million DSL modems in Brazil.  The
@@ -335,7 +335,7 @@ is valid to consider such cases as not being accidental.
 Not all adversarial behaviour by applications is deliberate, some is likely due
 to various levels of carelessness (some quite understandable, others not)
 and/or due to erroneous assumptions about the environments in which those
-applications (now) run.  We very breifly list some such cases:
+applications (now) run.  We very briefly list some such cases:
 
 - Application abuse for command and control, for example, use of IRC or apache
   logs for [malware command and
@@ -350,7 +350,7 @@ cause application server data to become available to adversaries
   Spectre](https://www.us-cert.gov/ncas/alerts/TA18-004A) and similar
 side-channels 
 
-- Compromised badly-maintained web sites, for example that have lead to massive
+- Compromised badly-maintained web sites, for example that have led to massive
   online [databases of passwords](https://haveibeenpwned.com/Passwords)
 
 - Supply-chain attacks, for example the [Target
