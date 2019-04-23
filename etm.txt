@@ -203,7 +203,7 @@ Internet-Draft                     etm                        April 2019
    claims that simple obfuscation enables malware to avoid detection by
    even sophisticated operators.  Given the scale of these deployments,
    even a small percentage of malware-infected applictions can affect a
-   huge numbers of people.
+   huge number of people.
 
 2.2.  Virtual private networks (VPNs)
 

@@ -247,7 +247,7 @@ distribute malware of many kinds and one recent study [@?curated]
 claims that simple obfuscation enables malware to avoid detection by
 even sophisticated operators. Given the
 scale of these deployments, even a small percentage of malware-infected
-applictions can affect a huge numbers of people.
+applictions can affect a huge number of people.
 
 ## Virtual private networks (VPNs)
 
