@@ -117,10 +117,10 @@ behaviour by applications that could affect Internet protocol development.  The
 adversarial behaviours described below involve various kinds of attack, varying
 from simple fraud, to credential theft, surveillance and contributing to DDoS
 attacks.  This is not intended to be a comprehensive nor complete survey, but
-to motivate us to consider deliberate adversarial behaviour by applicaions.
+to motivate us to consider deliberate adversarial behaviour by applications.
 </t>
 <t>Finally, we note that while we have these examples of deliberate adversarial
-behaviour, there are also many examples of applciation developers doing their
+behaviour, there are also many examples of application developers doing their
 best to protect the security and privacy of their users or customers. That's
 just the same as the case today where we need to consider in-network actors
 as potential adversaries despite the many examples of network operators who
@@ -146,7 +146,7 @@ countries in which they provide vantage points. <xref target="vpns"/>
 </section>
 
 <section anchor="compromised-home-networks" title="Compromised (home) networks">
-<t>What we normally might consider network devices such a home routers do also run
+<t>What we normally might consider network devices such as home routers do also run
 applications that can end up being adversarial, for example DNS and DHCP
 attacks from home routers, or other devices in the home. One study [home]
 reports on a 2011 attack that affected 4.5 million DSL modems in Brazil.  The
@@ -230,7 +230,7 @@ is valid to consider such cases as not being accidental.
 <t>Not all adversarial behaviour by applications is deliberate, some is likely due
 to various levels of carelessness (some quite understandable, others not)
 and/or due to erroneous assumptions about the environments in which those
-applications (now) run.  We very breifly list some such cases:
+applications (now) run.  We very briefly list some such cases:
 </t>
 <t>
 <list style="symbols">
@@ -244,7 +244,7 @@ cause application server data to become available to adversaries</t>
 <t>Virtualisation exposing secrets, for example <eref target="https://www.us-cert.gov/ncas/alerts/TA18-004A">Meltdown and
 Spectre</eref> and similar
 side-channels</t>
-<t>Compromised badly-maintained web sites, for example that have lead to massive
+<t>Compromised badly-maintained web sites, for example that have led to massive
 online <eref target="https://haveibeenpwned.com/Passwords">databases of passwords</eref></t>
 <t>Supply-chain attacks, for example the <eref target="https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/">Target
 attack</eref></t>
@@ -303,6 +303,8 @@ mechanisms may inadvertently create vectors for abuse-cases, given that
 designers cannot fully analyse their impact at the time a new protocol is
 defined or standardised. One might conclude that a lack of extensibility could
 be a virtue for some new protocols, in contrast to earlier assumptions.
+As pointed out by one commenter though, people can find ways to extend
+things regardless, if they feel the need.
 </t>
 </section>
 
@@ -391,8 +393,8 @@ exploitation harder or more transparent for adversarial applications.
 <section anchor="acknowledgements" title="Acknowledgements">
 <t>We'll happily ack anyone who's interested enough to read and comment on this.
 With no implication that they agree with some or all of the above, thanks to
-Jari Arkko, Christian Huitema and Daniel Kahn Gillmor for comments on an earlier version of
-the text.
+Jari Arkko, Carsten Bormann, Christian Huitema and Daniel Kahn Gillmor for
+comments on an earlier version of the text.
 </t>
 </section>
 
@@ -527,6 +529,20 @@ the text.
 <seriesInfo name="ACM Internet Measurement Conference" value="2018 (pp. 443-456)"/>
 </reference>
 </references>
+
+<section anchor="change-log" title="Change Log">
+<t>This isn't gonna end up as an RFC, but may as well be tidy...
+</t>
+
+<section anchor="changes-from-00-to-01" title="Changes from -00 to -01">
+<t>
+<list style="symbols">
+<t>I had lots of typos</t>
+<t>cabo: PR#1 fixed more typos and noted extensbility danger</t>
+</list>
+</t>
+</section>
+</section>
 
 </back>
 </rfc>

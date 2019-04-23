@@ -81,17 +81,19 @@ Table of Contents
      4.4.  Re-consider protocol design "lore"  . . . . . . . . . . .   8
      4.5.  Isolation . . . . . . . . . . . . . . . . . . . . . . . .   8
      4.6.  Transparency  . . . . . . . . . . . . . . . . . . . . . .   8
-     4.7.  Minimise  . . . . . . . . . . . . . . . . . . . . . . . .   8
+     4.7.  Minimise  . . . . . . . . . . . . . . . . . . . . . . . .   9
      4.8.  Same-Origin Policy  . . . . . . . . . . . . . . . . . . .   9
      4.9.  Greasing  . . . . . . . . . . . . . . . . . . . . . . . .   9
    5.  Conclusions . . . . . . . . . . . . . . . . . . . . . . . . .   9
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
    8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      9.1.  Informative References  . . . . . . . . . . . . . . . . .  10
      9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  13
+     A.1.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  14
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
 
@@ -104,8 +106,6 @@ Table of Contents
    themselves been compromised."  RFC 3552 is a formal part of of the
    IETF's process as it is also BCP72.
 
-   Since RFC 3552 was written, we have seen a greater emphasis on
-   considering privacy and [RFC6973] provides privacy guidance for
 
 
 
@@ -114,6 +114,8 @@ Farrell                 Expires October 25, 2019                [Page 2]
 Internet-Draft                     etm                        April 2019
 
 
+   Since RFC 3552 was written, we have seen a greater emphasis on
+   considering privacy and [RFC6973] provides privacy guidance for
    protocol developers.  RFC 6973 is not a formal BCP, but appears to
    have been useful for protocol developers as it is referenced by 38
    later RFCs at the time of writing [1].
@@ -163,8 +165,6 @@ Internet-Draft                     etm                        April 2019
 
 
 
-
-
 Farrell                 Expires October 25, 2019                [Page 3]
 
 Internet-Draft                     etm                        April 2019
@@ -186,10 +186,10 @@ Internet-Draft                     etm                        April 2019
    credential theft, surveillance and contributing to DDoS attacks.
    This is not intended to be a comprehensive nor complete survey, but
    to motivate us to consider deliberate adversarial behaviour by
-   applicaions.
+   applications.
 
    Finally, we note that while we have these examples of deliberate
-   adversarial behaviour, there are also many examples of applciation
+   adversarial behaviour, there are also many examples of application
    developers doing their best to protect the security and privacy of
    their users or customers.  That's just the same as the case today
    where we need to consider in-network actors as potential adversaries
@@ -215,7 +215,7 @@ Internet-Draft                     etm                        April 2019
 
 2.3.  Compromised (home) networks
 
-   What we normally might consider network devices such a home routers
+   What we normally might consider network devices such as home routers
    do also run applications that can end up being adversarial, for
    example DNS and DHCP attacks from home routers, or other devices in
 
@@ -315,7 +315,7 @@ Internet-Draft                     etm                        April 2019
    likely due to various levels of carelessness (some quite
    understandable, others not) and/or due to erroneous assumptions about
    the environments in which those applications (now) run.  We very
-   breifly list some such cases:
+   briefly list some such cases:
 
    o  Application abuse for command and control, for example, use of IRC
       or apache logs for malware command and control [5]
@@ -327,7 +327,7 @@ Internet-Draft                     etm                        April 2019
    o  Virtualisation exposing secrets, for example Meltdown and Spectre
       [7] and similar side-channels
 
-   o  Compromised badly-maintained web sites, for example that have lead
+   o  Compromised badly-maintained web sites, for example that have led
       to massive online databases of passwords [8]
 
 
@@ -406,7 +406,9 @@ Internet-Draft                     etm                        April 2019
    cases, given that designers cannot fully analyse their impact at the
    time a new protocol is defined or standardised.  One might conclude
    that a lack of extensibility could be a virtue for some new
-   protocols, in contrast to earlier assumptions.
+   protocols, in contrast to earlier assumptions.  As pointed out by one
+   commenter though, people can find ways to extend things regardless,
+   if they feel the need.
 
 4.5.  Isolation
 
@@ -437,11 +439,9 @@ Internet-Draft                     etm                        April 2019
    of CT, though clearly with significant authorisation being required
    and without the append-only nature of a CT log.
 
-4.7.  Minimise
 
-   As recommended in [RFC6973] data minimisation and additional
-   encryption are likely to be helpful - if applications don't ever see
-   data, or a cleartext form of data, then they should have a harder
+
+
 
 
 
@@ -450,6 +450,11 @@ Farrell                 Expires October 25, 2019                [Page 8]
 Internet-Draft                     etm                        April 2019
 
 
+4.7.  Minimise
+
+   As recommended in [RFC6973] data minimisation and additional
+   encryption are likely to be helpful - if applications don't ever see
+   data, or a cleartext form of data, then they should have a harder
    time misbehaving.  Similarly, not adding new long-term identifiers,
    and not exposing existing ones, would seem helpful.
 
@@ -493,11 +498,6 @@ Internet-Draft                     etm                        April 2019
    to the development of protocols that make exploitation harder or more
    transparent for adversarial applications.
 
-7.  IANA Considerations
-
-   There are no IANA considerations.
-
-
 
 
 
@@ -506,12 +506,16 @@ Farrell                 Expires October 25, 2019                [Page 9]
 Internet-Draft                     etm                        April 2019
 
 
+7.  IANA Considerations
+
+   There are no IANA considerations.
+
 8.  Acknowledgements
 
    We'll happily ack anyone who's interested enough to read and comment
    on this.  With no implication that they agree with some or all of the
-   above, thanks to Jari Arkko, Christian Huitema and Daniel Kahn
-   Gillmor for comments on an earlier version of the text.
+   above, thanks to Jari Arkko, Carsten Bormann, Christian Huitema and
+   Daniel Kahn Gillmor for comments on an earlier version of the text.
 
 9.  References
 
@@ -549,10 +553,6 @@ Internet-Draft                     etm                        April 2019
               Principle", draft-iab-protocol-maintenance-02 (work in
               progress), March 2019.
 
-   [I-D.ietf-tls-grease]
-              Benjamin, D., "Applying GREASE to TLS Extensibility",
-              draft-ietf-tls-grease-02 (work in progress), January 2019.
-
 
 
 
@@ -561,6 +561,10 @@ Farrell                 Expires October 25, 2019               [Page 10]
 
 Internet-Draft                     etm                        April 2019
 
+
+   [I-D.ietf-tls-grease]
+              Benjamin, D., "Applying GREASE to TLS Extensibility",
+              draft-ietf-tls-grease-02 (work in progress), January 2019.
 
    [I-D.nottingham-for-the-users]
               Nottingham, M., "The Internet is for End Users", draft-
@@ -606,10 +610,6 @@ Internet-Draft                     etm                        April 2019
    [RFC7258]  Farrell, S. and H. Tschofenig, "Pervasive Monitoring Is an
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <https://www.rfc-editor.org/info/rfc7258>.
-
-
-
-
 
 
 
@@ -717,9 +717,9 @@ Internet-Draft                     etm                        April 2019
 
    [16] https://gdpr-info.eu/art-15-gdpr/
 
-Author's Address
+Appendix A.  Change Log
 
-
+   This isn't gonna end up as an RFC, but may as well be tidy...
 
 
 
@@ -730,18 +730,18 @@ Farrell                 Expires October 25, 2019               [Page 13]
 Internet-Draft                     etm                        April 2019
 
 
+A.1.  Changes from -00 to -01
+
+   o  I had lots of typos
+
+   o  cabo: PR#1 fixed more typos and noted extensbility danger
+
+Author's Address
+
    Stephen Farrell
    Trinity College Dublin
 
    Email: stephen.farrell@cs.tcd.ie
-
-
-
-
-
-
-
-
 
 
 

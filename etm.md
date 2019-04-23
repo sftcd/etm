@@ -405,6 +405,8 @@ mechanisms may inadvertently create vectors for abuse-cases, given that
 designers cannot fully analyse their impact at the time a new protocol is
 defined or standardised. One might conclude that a lack of extensibility could
 be a virtue for some new protocols, in contrast to earlier assumptions.
+As pointed out by one commenter though, people can find ways to extend
+things regardless, if they feel the need.
 
 ## Isolation
 
@@ -483,8 +485,19 @@ There are no IANA considerations.
 
 We'll happily ack anyone who's interested enough to read and comment on this.
 With no implication that they agree with some or all of the above, thanks to
-Jari Arkko, Christian Huitema and Daniel Kahn Gillmor for comments on an earlier version of
-the text.
+Jari Arkko, Carsten Bormann, Christian Huitema and Daniel Kahn Gillmor for
+comments on an earlier version of the text.
+
+{backmatter}
+
+# Change Log
+
+This isn't gonna end up as an RFC, but may as well be tidy...
+
+## Changes from -00 to -01
+
+- I had lots of typos
+- cabo: PR#1 fixed more typos and noted extensbility danger
 
 
 
