@@ -3,7 +3,7 @@
    Title = "We're gonna need a bigger threat model"
    abbrev = "etm"
    category = "info"
-   docName = "draft-farrell-etm-00"
+   docName = "draft-farrell-etm-01"
    ipr = "trust200902"
    area = "Network Working Group"
    keyword = [""]
@@ -142,13 +142,14 @@
 <seriesInfo name="Symposium on Usable Privacy and Security (SOUPS)" value="2015"/>
 </reference>
 
-<reference anchor="abusescases" target="">
+<reference anchor="abusecases" target="https://www.acsac.org/1999/papers/wed-b-1030-john.pdf">
 <front>
     <title>Using abuse case models for security requirements analysis</title>
-    <author intiials="J." surname="McDermott" fullname="John McDermott"/>
+    <author initials="J." surname="McDermott" fullname="John McDermott"/>
     <author initials="C." surname="Fox" fullname="Chris Fox" />
+    <date year="1999"/>
 </front>
-<seriesInfo name="IEEE Annual Computer Security Applications Conference (ACSAC'99)". value="1999"/>
+<seriesInfo name="IEEE Annual Computer Security Applications Conference (ACSAC'99)" value="1999"/>
 </reference>
 
 .# Abstract
@@ -202,7 +203,7 @@ adversarial application behaviours, such a position is clearly mistaken once
 one notes that adding middleboxes that can themselves be adverserial cannot be
 a solution to the problem of possibly encountering adversarial code on the
 network.  It is also the case that the IETF has rough consensus to provide
-better, and not weaker, securty and privacy, and has maintained that consensus
+better, and not weaker, security and privacy, and has maintained that consensus
 over three decades, despite repeated (and repetitive;-) debates on the topic.
 That consensus is represented in [@?RFC2404], BCP 200 [@?RFC1984] and more
 latterly, the above-mentioned BCP 188 as well as in the numerous RFCs
@@ -211,7 +212,7 @@ threat model leads to a change in that rough consensus seems highly remote.
 
 It is not clear if the IETF will reach rough consensus on a description of such
 an expanded threat model, but we further argue that ignoring this aspect of
-deployed reality cannot may not bode well for Internet protocol development.
+deployed reality may not bode well for Internet protocol development.
 
 Absent such an expanded threat model, we expect to see more of a mismatch
 between expectaions and the deployment reality for some Internet protocols. 
@@ -228,7 +229,7 @@ this document may impart - hopefully, there's a bit of hope at the end;-)
 In this section we describe a few documented examples of deliberate adversarial
 behaviour by applications that could affect Internet protocol development.  The
 adversarial behaviours described below involve various kinds of attack, varying
-from simlple fraud, to credential theft, surveillance and contributing to DDoS
+from simple fraud, to credential theft, surveillance and contributing to DDoS
 attacks.  This is not intended to be a comprehensive nor complete survey, but
 to motivate us to consider deliberate adversarial behaviour by applicaions.
 
@@ -262,7 +263,7 @@ applications that can end up being adversarial, for example DNS and DHCP
 attacks from home routers, or other devices in the home. One study [home]
 reports on a 2011 attack that affected 4.5 million DSL modems in Brazil.  The
 absence of software update [@?RFC8240] has been a major cause of these issues
-and rises to the level that considering allowing this as intentional behaviour is
+and rises to the level that considering this as intentional behaviour is
 warranted.
 
 ## Web browsers
@@ -275,7 +276,7 @@ offered by browsers. [@?tracking]
 
 While some people may be sanguine about this kind of tracking, others consider
 this behaviour unwelcome, when or if they are informed that it happens,
-[attitude] though the evidence here seems somewhat harder to interpret and many
+[@?attitude] though the evidence here seems somewhat harder to interpret and many
 studies (that we have found to date) involve small numbers of users.
 Historically, browsers have not made this kind of tracking visible and have
 enabled it by default, though some recent browser versions are starting to
@@ -295,7 +296,8 @@ prudent to assume that some (or most?) do not in fact care about user privacy,
 or at least not in ways with which many of their users would agree. And of
 course, today's web sites are actually mostly fairly complex web applications
 and are no longer static sets of HTML files, so calling these "web sites" is
-perhaps a misnomer, but considered as web applications, it seems clear that
+perhaps a misnomer, but considered as web applications, that may for 
+example link in advertising networks, it seems clear that
 many exist that are adversarial.
 
 ## Tracking bugs in mail
@@ -390,7 +392,7 @@ for here, so may indicate that a BCP in that space could also be useful.
 Protocol developers and those implementing and deploying Internet technologies
 are typically most interested in a few specific use-cases for which they need
 solutions. Expanding our threat model to include adversarial application
-behaviours [abusecases] seems likely to call for significant attention to be
+behaviours [@?abusecases] seems likely to call for significant attention to be
 paid to potential abuses of whatever new or re-purposed technology is being
 considered. 
 
@@ -427,7 +429,7 @@ similar approaches could be useful for other protocols or technologies.
 In addition, legislative requirements such as those imposed by the GDPR for
 [subject access to data](https://gdpr-info.eu/art-15-gdpr/) could lead to a
 desire to handle internal data structures and databases in ways that are
-reminiscent of CT, though clearly with signifnant authorisation being required
+reminiscent of CT, though clearly with significant authorisation being required
 and without the append-only nature of a CT log.
 
 ## Minimise
@@ -481,7 +483,7 @@ There are no IANA considerations.
 
 We'll happily ack anyone who's interested enough to read and comment on this.
 With no implication that they agree with some or all of the above, thanks to
-Christian Huitema and Daniel Kahn Gillmor for comments on an earlier version of
+Jari Arkko, Christian Huitema and Daniel Kahn Gillmor for comments on an earlier version of
 the text.
 
 
