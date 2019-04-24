@@ -4,8 +4,8 @@
 
 Network Working Group                                         S. Farrell
 Internet-Draft                                    Trinity College Dublin
-Intended status: Informational                            April 23, 2019
-Expires: October 25, 2019
+Intended status: Informational                            April 24, 2019
+Expires: October 26, 2019
 
 
                  We're gonna need a bigger threat model
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 25, 2019.
+   This Internet-Draft will expire on October 26, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Farrell                 Expires October 25, 2019                [Page 1]
+Farrell                 Expires October 26, 2019                [Page 1]
 
 Internet-Draft                     etm                        April 2019
 
@@ -71,29 +71,30 @@ Table of Contents
      2.4.  Web browsers  . . . . . . . . . . . . . . . . . . . . . .   5
      2.5.  Web site policy deception . . . . . . . . . . . . . . . .   5
      2.6.  Tracking bugs in mail . . . . . . . . . . . . . . . . . .   5
-     2.7.  Smart televisions . . . . . . . . . . . . . . . . . . . .   6
-     2.8.  So-called Internet of things  . . . . . . . . . . . . . .   6
-   3.  Inadvertent adversarial behaviours  . . . . . . . . . . . . .   6
+     2.7.  Troll farms in online social networks . . . . . . . . . .   6
+     2.8.  Smart televisions . . . . . . . . . . . . . . . . . . . .   6
+     2.9.  So-called Internet of things  . . . . . . . . . . . . . .   6
+   3.  Inadvertent adversarial behaviours  . . . . . . . . . . . . .   7
    4.  Possible directions for an expanded threat model  . . . . . .   7
-     4.1.  Develop a BCP for privacy considerations  . . . . . . . .   7
-     4.2.  Consider the user perspective . . . . . . . . . . . . . .   7
-     4.3.  Consider ABuse-cases as well as use-cases . . . . . . . .   7
+     4.1.  Develop a BCP for privacy considerations  . . . . . . . .   8
+     4.2.  Consider the user perspective . . . . . . . . . . . . . .   8
+     4.3.  Consider ABuse-cases as well as use-cases . . . . . . . .   8
      4.4.  Re-consider protocol design "lore"  . . . . . . . . . . .   8
      4.5.  Isolation . . . . . . . . . . . . . . . . . . . . . . . .   8
-     4.6.  Transparency  . . . . . . . . . . . . . . . . . . . . . .   8
+     4.6.  Transparency  . . . . . . . . . . . . . . . . . . . . . .   9
      4.7.  Minimise  . . . . . . . . . . . . . . . . . . . . . . . .   9
      4.8.  Same-Origin Policy  . . . . . . . . . . . . . . . . . . .   9
      4.9.  Greasing  . . . . . . . . . . . . . . . . . . . . . . . .   9
-   5.  Conclusions . . . . . . . . . . . . . . . . . . . . . . . . .   9
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
+   5.  Conclusions . . . . . . . . . . . . . . . . . . . . . . . . .  10
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
    8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      9.1.  Informative References  . . . . . . . . . . . . . . . . .  10
      9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  13
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  14
      A.1.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  14
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
 
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-Farrell                 Expires October 25, 2019                [Page 2]
+Farrell                 Expires October 26, 2019                [Page 2]
 
 Internet-Draft                     etm                        April 2019
 
@@ -165,7 +165,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 25, 2019                [Page 3]
+Farrell                 Expires October 26, 2019                [Page 3]
 
 Internet-Draft                     etm                        April 2019
 
@@ -221,7 +221,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 25, 2019                [Page 4]
+Farrell                 Expires October 26, 2019                [Page 4]
 
 Internet-Draft                     etm                        April 2019
 
@@ -277,7 +277,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 25, 2019                [Page 5]
+Farrell                 Expires October 26, 2019                [Page 5]
 
 Internet-Draft                     etm                        April 2019
 
@@ -288,10 +288,28 @@ Internet-Draft                     etm                        April 2019
    intentional, for example if leaked data included a hash of the
    recipient email address.
 
-2.7.  Smart televisions
+2.7.  Troll farms in online social networks
+
+   Online social network applications/platforms are well-known to be
+   vulnerable to troll farms, sometimes with tragic consequences, [4]
+   where organised/paid sets of users deliberately abuse the application
+   platform for reasons invisible to a normal user.  For-profit
+   companies building online social networks are well aware that subsets
+   of their "normal" users are anything but.  In one US study, [troll]
+   sets of troll accounts were roughly equally distributed on both sides
+   of a controversial discussion.  While Internet protocol designers do
+   sometimes consider sybil attacks [sybil], arguably we have not
+   provided mechanisms to handle such attacks sufficiently well,
+   especially when they occur within walled-gardens.  Equally, one can
+   make the case that some online social networks, at some points in
+   their evolution, appear to have prioritised counts of active users so
+   highly that they have failed to invest sufficient effort for
+   detection of such troll farms.
+
+2.8.  Smart televisions
 
    There have been examples of so-called "smart" televisions spying on
-   their owners without permission [4] and one survey of user attitudes
+   their owners without permission [5] and one survey of user attitudes
    [smarttv] found "broad agreement was that it is unacceptable for the
    data to be repurposed or shared" although the level of user
    understanding may be questionable.  What is clear though is that such
@@ -299,7 +317,7 @@ Internet-Draft                     etm                        April 2019
    would allow them to meaningfully make a decision as to whether or not
    they want to share such data.
 
-2.8.  So-called Internet of things
+2.9.  So-called Internet of things
 
    Many so-called Internet of Things (IoT) devices ("so-called" as all
    devices were already things:-) have been found extremely deficient
@@ -309,52 +327,55 @@ Internet-Draft                     etm                        April 2019
    the levels of incompetence frequently seen imply that it is valid to
    consider such cases as not being accidental.
 
+
+
+
+
+
+
+Farrell                 Expires October 26, 2019                [Page 6]
+
+Internet-Draft                     etm                        April 2019
+
+
 3.  Inadvertent adversarial behaviours
 
    Not all adversarial behaviour by applications is deliberate, some is
    likely due to various levels of carelessness (some quite
    understandable, others not) and/or due to erroneous assumptions about
-   the environments in which those applications (now) run.  We very
-   briefly list some such cases:
+   the environments in which those applications (now) run.
+   We very briefly list some such cases:
 
    o  Application abuse for command and control, for example, use of IRC
-      or apache logs for malware command and control [5]
+      or apache logs for malware command and control [6]
 
-   o  Carelessly leaky buckets [6], for example, lots of Amazon S3 leaks
+   o  Carelessly leaky buckets [7], for example, lots of Amazon S3 leaks
       showing that careless admins can too easily cause application
       server data to become available to adversaries
 
    o  Virtualisation exposing secrets, for example Meltdown and Spectre
-      [7] and similar side-channels
+      [8] and similar side-channels
 
    o  Compromised badly-maintained web sites, for example that have led
-      to massive online databases of passwords [8]
+      to massive online databases of passwords [9]
 
-
-
-
-Farrell                 Expires October 25, 2019                [Page 6]
-
-Internet-Draft                     etm                        April 2019
-
-
-   o  Supply-chain attacks, for example the Target attack [9]
+   o  Supply-chain attacks, for example the Target attack [10]
 
    o  Breaches of major service providers, that many of us might have
       assumed would be sufficiently capable to be the best large-scale
       "Identity providers", for example:
 
-      *  3 billion accounts: yahoo [10]
+      *  3 billion accounts: yahoo [11]
 
-      *  many millions at risk: telcos selling location data [11]
+      *  many millions at risk: telcos selling location data [12]
 
-      *  50 million accounts: facebook [12]
+      *  50 million accounts: facebook [13]
 
-      *  14 million accounts: verizon [13]
+      *  14 million accounts: verizon [14]
 
-      *  "hundreds of thousands" of accounts: google [14]
+      *  "hundreds of thousands" of accounts: google [15]
 
-      *  unknown numbers, some email content exposed: microsoft [15]
+      *  unknown numbers, some email content exposed: microsoft [16]
 
    o  Breaches of smaller service providers: Too many to enumerate,
       sadly
@@ -364,6 +385,15 @@ Internet-Draft                     etm                        April 2019
    As we believe useful conclusions in this space require community
    consensus, we won't offer definitive descriptions of an expanded
    threat model but we will call out some potential directions that
+
+
+
+
+Farrell                 Expires October 26, 2019                [Page 7]
+
+Internet-Draft                     etm                        April 2019
+
+
    could be explored at the DEDR workshop and thereafter, if there is
    interest in this topic.
 
@@ -386,14 +416,6 @@ Internet-Draft                     etm                        April 2019
    technologies are typically most interested in a few specific use-
    cases for which they need solutions.  Expanding our threat model to
    include adversarial application behaviours [abusecases] seems likely
-
-
-
-Farrell                 Expires October 25, 2019                [Page 7]
-
-Internet-Draft                     etm                        April 2019
-
-
    to call for significant attention to be paid to potential abuses of
    whatever new or re-purposed technology is being considered.
 
@@ -420,6 +442,14 @@ Internet-Draft                     etm                        April 2019
    or sandboxing.  Protocol artefacts that relate to uses of such
    isolation mechanisms might be worth considering.  To an extent, the
    IETF has in practice already recognised some of these issues as being
+
+
+
+Farrell                 Expires October 26, 2019                [Page 8]
+
+Internet-Draft                     etm                        April 2019
+
+
    in-scope, e.g.  when considering the linkability issues with
    mechanisms such as TLS session tickets, or QUIC connection
    identifiers.
@@ -434,21 +464,10 @@ Internet-Draft                     etm                        April 2019
    useful for other protocols or technologies.
 
    In addition, legislative requirements such as those imposed by the
-   GDPR for subject access to data [16] could lead to a desire to handle
+   GDPR for subject access to data [17] could lead to a desire to handle
    internal data structures and databases in ways that are reminiscent
    of CT, though clearly with significant authorisation being required
    and without the append-only nature of a CT log.
-
-
-
-
-
-
-
-Farrell                 Expires October 25, 2019                [Page 8]
-
-Internet-Draft                     etm                        April 2019
-
 
 4.7.  Minimise
 
@@ -477,6 +496,16 @@ Internet-Draft                     etm                        April 2019
    protocol mechanisms can have impact in this space, if we spend the
    time to try analyse the incentives of the various parties.
 
+
+
+
+
+
+Farrell                 Expires October 26, 2019                [Page 9]
+
+Internet-Draft                     etm                        April 2019
+
+
 5.  Conclusions
 
    At this stage we don't think it approriate to claim that any strong
@@ -497,14 +526,6 @@ Internet-Draft                     etm                        April 2019
    model could possibly help reduce some of those tensions, if it leads
    to the development of protocols that make exploitation harder or more
    transparent for adversarial applications.
-
-
-
-
-Farrell                 Expires October 25, 2019                [Page 9]
-
-Internet-Draft                     etm                        April 2019
-
 
 7.  IANA Considerations
 
@@ -534,6 +555,13 @@ Internet-Draft                     etm                        April 2019
               <https://www.usenix.org/conference/soups2015/proceedings/
               presentation/chanchary>.
 
+
+
+Farrell                 Expires October 26, 2019               [Page 10]
+
+Internet-Draft                     etm                        April 2019
+
+
    [cambridge]
               Isaak, J. and M. Hanna, "User Data Privacy: Facebook,
               Cambridge Analytica, and Privacy Protection",
@@ -552,15 +580,6 @@ Internet-Draft                     etm                        April 2019
               Thomson, M., "The Harmful Consequences of the Robustness
               Principle", draft-iab-protocol-maintenance-02 (work in
               progress), March 2019.
-
-
-
-
-
-Farrell                 Expires October 25, 2019               [Page 10]
-
-Internet-Draft                     etm                        April 2019
-
 
    [I-D.ietf-tls-grease]
               Benjamin, D., "Applying GREASE to TLS Extensibility",
@@ -588,6 +607,17 @@ Internet-Draft                     etm                        April 2019
               ESP and AH", RFC 2404, DOI 10.17487/RFC2404, November
               1998, <https://www.rfc-editor.org/info/rfc2404>.
 
+
+
+
+
+
+
+Farrell                 Expires October 26, 2019               [Page 11]
+
+Internet-Draft                     etm                        April 2019
+
+
    [RFC3552]  Rescorla, E. and B. Korver, "Guidelines for Writing RFC
               Text on Security Considerations", BCP 72, RFC 3552,
               DOI 10.17487/RFC3552, July 2003,
@@ -611,13 +641,6 @@ Internet-Draft                     etm                        April 2019
               Attack", BCP 188, RFC 7258, DOI 10.17487/RFC7258, May
               2014, <https://www.rfc-editor.org/info/rfc7258>.
 
-
-
-Farrell                 Expires October 25, 2019               [Page 11]
-
-Internet-Draft                     etm                        April 2019
-
-
    [RFC8240]  Tschofenig, H. and S. Farrell, "Report from the Internet
               of Things Software Update (IoTSU) Workshop 2016",
               RFC 8240, DOI 10.17487/RFC8240, September 2017,
@@ -639,6 +662,25 @@ Internet-Draft                     etm                        April 2019
               wp-content/uploads/2018/06/
               eurousec2018_16_Malkin_paper.pdf>.
 
+
+
+
+
+
+
+
+Farrell                 Expires October 26, 2019               [Page 12]
+
+Internet-Draft                     etm                        April 2019
+
+
+   [sybil]    Viswanath, B., Post, A., Gummadi, K., and A. Mislove, "An
+              analysis of social network-based sybil defenses", ACM
+              SIGCOMM Computer Communication Review 41(4), 363-374.
+              2011, 2011,
+              <https://conferences.sigcomm.org/sigcomm/2010/papers/
+              sigcomm/p363.pdf>.
+
    [toys]     Chu, G., Apthorpe, N., and N. Feamster, "Security and
               Privacy Analyses of Internet of Things Childrens' Toys",
               IEEE Internet of Things Journal 6.1 (2019): 978-985.,
@@ -651,6 +693,12 @@ Internet-Draft                     etm                        April 2019
               on System Sciences, 2018,
               <https://scholarspace.manoa.hawaii.edu/
               bitstream/10125/50485/paper0598.pdf>.
+
+   [troll]    Stewart, L., Arif, A., and K. Starbird, "Examining trolls
+              and polarization with a retweet network", ACM Workshop on
+              Misinformation and Misbehavior Mining on the Web 2018,
+              2018, <https://faculty.washington.edu/kstarbi/
+              examining-trolls-polarization.pdf>.
 
    [unread]   Obar, J. and A. Oeldorf-Hirsch, "The biggest lie on the
               internet: Ignoring the privacy policies and terms of
@@ -665,15 +713,6 @@ Internet-Draft                     etm                        April 2019
               <https://eprints.networks.imdea.org/1886/1/
               imc18-final198.pdf>.
 
-
-
-
-
-Farrell                 Expires October 25, 2019               [Page 12]
-
-Internet-Draft                     etm                        April 2019
-
-
 9.2.  URIs
 
    [1] https://datatracker.ietf.org/doc/rfc6973/referencedby/
@@ -682,59 +721,70 @@ Internet-Draft                     etm                        April 2019
 
    [3] https://www.iab.org/activities/workshops/dedr-workshop/
 
-   [4] https://www.welivesecurity.com/2013/11/22/lg-admits-that-its-
+
+
+
+
+Farrell                 Expires October 26, 2019               [Page 13]
+
+Internet-Draft                     etm                        April 2019
+
+
+   [4] https://www.nytimes.com/2018/10/20/us/politics/saudi-image-
+       campaign-twitter.html
+
+   [5] https://www.welivesecurity.com/2013/11/22/lg-admits-that-its-
        smart-tvs-have-been-watching-users-and-transmitting-data-without-
        consent/
 
-   [5] https://security.stackexchange.com/questions/100577/creating-
+   [6] https://security.stackexchange.com/questions/100577/creating-
        botnet-cc-server-what-architecture-should-i-use-irc-http
 
-   [6] https://businessinsights.bitdefender.com/worst-amazon-breaches
+   [7] https://businessinsights.bitdefender.com/worst-amazon-breaches
 
-   [7] https://www.us-cert.gov/ncas/alerts/TA18-004A
+   [8] https://www.us-cert.gov/ncas/alerts/TA18-004A
 
-   [8] https://haveibeenpwned.com/Passwords
+   [9] https://haveibeenpwned.com/Passwords
 
-   [9] https://www.zdnet.com/article/how-hackers-stole-millions-of-
-       credit-card-records-from-target/
+   [10] https://www.zdnet.com/article/how-hackers-stole-millions-of-
+        credit-card-records-from-target/
 
-   [10] https://www.wired.com/story/yahoo-breach-three-billion-accounts/
+   [11] https://www.wired.com/story/yahoo-breach-three-billion-accounts/
 
-   [11] https://www.zdnet.com/article/us-telcos-caught-selling-your-
+   [12] https://www.zdnet.com/article/us-telcos-caught-selling-your-
         location-data-again-senator-demands-new-laws/
 
-   [12] https://www.cnet.com/news/facebook-breach-affected-50-million-
+   [13] https://www.cnet.com/news/facebook-breach-affected-50-million-
         people/
 
-   [13] https://www.zdnet.com/article/millions-verizon-customer-records-
+   [14] https://www.zdnet.com/article/millions-verizon-customer-records-
         israeli-data/
 
-   [14] https://www.wsj.com/articles/google-exposed-user-data-feared-
+   [15] https://www.wsj.com/articles/google-exposed-user-data-feared-
         repercussions-of-disclosing-to-public-1539017194
 
-   [15] https://motherboard.vice.com/en_us/article/ywyz3x/hackers-could-
+   [16] https://motherboard.vice.com/en_us/article/ywyz3x/hackers-could-
         read-your-hotmail-msn-outlook-microsoft-customer-support
 
-   [16] https://gdpr-info.eu/art-15-gdpr/
+   [17] https://gdpr-info.eu/art-15-gdpr/
 
 Appendix A.  Change Log
 
    This isn't gonna end up as an RFC, but may as well be tidy...
-
-
-
-
-
-Farrell                 Expires October 25, 2019               [Page 13]
-
-Internet-Draft                     etm                        April 2019
-
 
 A.1.  Changes from -00 to -01
 
    o  I had lots of typos
 
    o  cabo: PR#1 fixed more typos and noted extensbility danger
+
+
+
+
+Farrell                 Expires October 26, 2019               [Page 14]
+
+Internet-Draft                     etm                        April 2019
+
 
 Author's Address
 
@@ -781,4 +831,10 @@ Author's Address
 
 
 
-Farrell                 Expires October 25, 2019               [Page 14]
+
+
+
+
+
+
+Farrell                 Expires October 26, 2019               [Page 15]

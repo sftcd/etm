@@ -27,7 +27,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="April" day="23"/>
+<date year="2019" month="April" day="24"/>
 
 <area>Network Working Group</area>
 <workgroup></workgroup>
@@ -203,6 +203,24 @@ recipient email address.
 </t>
 </section>
 
+<section anchor="troll-farms-in-online-social-networks" title="Troll farms in online social networks">
+<t>Online social network applications/platforms are well-known to be vulnerable to
+troll farms, sometimes with tragic
+<eref target="https://www.nytimes.com/2018/10/20/us/politics/saudi-image-campaign-twitter.html">consequences,</eref>
+where organised/paid sets of users deliberately abuse the application platform
+for reasons invisible to a normal user.  For-profit companies building online
+social networks are well aware that subsets of their &quot;normal&quot; users are
+anything but.  In one US study, <xref target="troll"/> sets of troll accounts were roughly
+equally distributed on both sides of a controversial discussion. While Internet
+protocol designers do sometimes consider sybil attacks <xref target="sybil"/>, arguably we
+have not provided mechanisms to handle such attacks sufficiently well,
+especially when they occur within walled-gardens. Equally, one can make the
+case that some online social networks, at some points in their evolution,
+appear to have prioritised counts of active users so highly that they have
+failed to invest sufficient effort for detection of such troll farms.
+</t>
+</section>
+
 <section anchor="smart-televisions" title="Smart televisions">
 <t>There have been examples of so-called &quot;smart&quot; televisions spying on their
 owners <eref target="https://www.welivesecurity.com/2013/11/22/lg-admits-that-its-smart-tvs-have-been-watching-users-and-transmitting-data-without-consent/">without permission</eref>
@@ -230,7 +248,9 @@ is valid to consider such cases as not being accidental.
 <t>Not all adversarial behaviour by applications is deliberate, some is likely due
 to various levels of carelessness (some quite understandable, others not)
 and/or due to erroneous assumptions about the environments in which those
-applications (now) run.  We very briefly list some such cases:
+applications (now) run.
+<vspace/>
+We very briefly list some such cases:
 </t>
 <t>
 <list style="symbols">
@@ -473,6 +493,17 @@ comments on an earlier version of the text.
 </front>
 <seriesInfo name="European Workshop on Usable Security (Euro USEC)" value="2018"/>
 </reference>
+<reference anchor="sybil" target="https://conferences.sigcomm.org/sigcomm/2010/papers/sigcomm/p363.pdf">
+<front>
+    <title>An analysis of social network-based sybil defenses</title>
+    <author initials="B." surname="Viswanath" fullname="Bimal Viswanath"/>
+    <author initials="A." surname="Post" fullname="Ansley Post"/>
+    <author initials="K." surname="Gummadi" fullname="Krishna P. Gummadi"/>
+    <author initials="A." surname="Mislove" fullname="Alan Mislove"/>
+    <date year="2011"/>
+</front>
+<seriesInfo name="ACM SIGCOMM Computer Communication Review" value="41(4), 363-374. 2011"/>
+</reference>
 <reference anchor="toys" target="https://arxiv.org/pdf/1805.02751.pdf">
 <front>
     <title>Security and Privacy Analyses of Internet of Things Childrens' Toys</title>
@@ -505,6 +536,16 @@ comments on an earlier version of the text.
     <date year="2018"/>
 </front>
 <seriesInfo name="" value="Proceedings of the 51st Hawaii International Conference on System Sciences"/>
+</reference>
+<reference anchor="troll" target="https://faculty.washington.edu/kstarbi/examining-trolls-polarization.pdf">
+<front>
+    <title>Examining trolls and polarization with a retweet network</title>
+    <author initials="L." surname="Stewart" fullname="Leo G. Stewart"/>
+    <author initials="A." surname="Arif" fullname="Ahmer Arif"/>
+    <author initials="K." surname="Starbird" fullname="Kate Starbird"/>
+    <date year="2018"/>
+</front>
+<seriesInfo name="ACM Workshop on Misinformation and Misbehavior Mining on the Web" value="2018"/>
 </reference>
 <reference anchor="unread" target="https://doi.org/10.1080/1369118X.2018.1486870">
 <front>

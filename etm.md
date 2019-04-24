@@ -152,6 +152,29 @@
 <seriesInfo name="IEEE Annual Computer Security Applications Conference (ACSAC'99)" value="1999"/>
 </reference>
 
+<reference anchor="troll" target="https://faculty.washington.edu/kstarbi/examining-trolls-polarization.pdf">
+<front>
+    <title>Examining trolls and polarization with a retweet network</title>
+    <author initials="L." surname="Stewart" fullname="Leo G. Stewart"/>
+    <author initials="A." surname="Arif" fullname="Ahmer Arif"/>
+    <author initials="K." surname="Starbird" fullname="Kate Starbird"/>
+    <date year="2018"/>
+</front>
+<seriesInfo name="ACM Workshop on Misinformation and Misbehavior Mining on the Web" value="2018"/>
+</reference>
+
+<reference anchor="sybil" target="https://conferences.sigcomm.org/sigcomm/2010/papers/sigcomm/p363.pdf">
+<front>
+    <title>An analysis of social network-based sybil defenses</title>
+    <author initials="B." surname="Viswanath" fullname="Bimal Viswanath"/>
+    <author initials="A." surname="Post" fullname="Ansley Post"/>
+    <author initials="K." surname="Gummadi" fullname="Krishna P. Gummadi"/>
+    <author initials="A." surname="Mislove" fullname="Alan Mislove"/>
+    <date year="2011"/>
+</front>
+<seriesInfo name="ACM SIGCOMM Computer Communication Review" value="41(4), 363-374. 2011"/>
+</reference>
+
 .# Abstract
 
 We argue that an expanded threat model is needed for Internet protocol development
@@ -310,6 +333,23 @@ one study [@?mailbug] the authors estimated that 62% of leakage to third
 parties was intentional, for example if leaked data included a hash of the
 recipient email address. 
 
+## Troll farms in online social networks
+
+Online social network applications/platforms are well-known to be vulnerable to
+troll farms, sometimes with tragic
+[consequences,](https://www.nytimes.com/2018/10/20/us/politics/saudi-image-campaign-twitter.html)
+where organised/paid sets of users deliberately abuse the application platform
+for reasons invisible to a normal user.  For-profit companies building online
+social networks are well aware that subsets of their "normal" users are
+anything but.  In one US study, [@?troll] sets of troll accounts were roughly
+equally distributed on both sides of a controversial discussion. While Internet
+protocol designers do sometimes consider sybil attacks [@?sybil], arguably we
+have not provided mechanisms to handle such attacks sufficiently well,
+especially when they occur within walled-gardens. Equally, one can make the
+case that some online social networks, at some points in their evolution,
+appear to have prioritised counts of active users so highly that they have
+failed to invest sufficient effort for detection of such troll farms.
+
 ## Smart televisions
 
 There have been examples of so-called "smart" televisions spying on their
@@ -335,7 +375,8 @@ is valid to consider such cases as not being accidental.
 Not all adversarial behaviour by applications is deliberate, some is likely due
 to various levels of carelessness (some quite understandable, others not)
 and/or due to erroneous assumptions about the environments in which those
-applications (now) run.  We very briefly list some such cases:
+applications (now) run.  
+We very briefly list some such cases:
 
 - Application abuse for command and control, for example, use of IRC or apache
   logs for [malware command and
