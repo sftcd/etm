@@ -27,7 +27,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="April" day="24"/>
+<date year="2019" month="April" day="25"/>
 
 <area>Network Working Group</area>
 <workgroup></workgroup>
@@ -273,6 +273,7 @@ be sufficiently capable to be the best large-scale &quot;Identity providers&quot
 example:
 <list style="symbols">
 <t>3 billion accounts: <eref target="https://www.wired.com/story/yahoo-breach-three-billion-accounts/">yahoo</eref></t>
+<t>&quot;up to 600M&quot; account passwords stored in clear: <eref target="https://www.pcmag.com/news/367319/facebook-stored-up-to-600m-user-passwords-in-plain-text">facebook</eref></t>
 <t>many millions at risk: <eref target="https://www.zdnet.com/article/us-telcos-caught-selling-your-location-data-again-senator-demands-new-laws/">telcos selling location data</eref></t>
 <t>50 million accounts: <eref target="https://www.cnet.com/news/facebook-breach-affected-50-million-people/">facebook</eref></t>
 <t>14 million accounts: <eref target="https://www.zdnet.com/article/millions-verizon-customer-records-israeli-data/">verizon</eref></t>

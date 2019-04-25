@@ -401,6 +401,7 @@ side-channels
   be sufficiently capable to be the best large-scale "Identity providers", for
 example:
     - 3 billion accounts: [yahoo](https://www.wired.com/story/yahoo-breach-three-billion-accounts/) 
+    - "up to 600M" account passwords stored in clear: [facebook](https://www.pcmag.com/news/367319/facebook-stored-up-to-600m-user-passwords-in-plain-text)
     - many millions at risk: [telcos selling location data](https://www.zdnet.com/article/us-telcos-caught-selling-your-location-data-again-senator-demands-new-laws/)
     - 50 million accounts: [facebook](https://www.cnet.com/news/facebook-breach-affected-50-million-people/)
     - 14 million accounts: [verizon](https://www.zdnet.com/article/millions-verizon-customer-records-israeli-data/)

@@ -4,8 +4,8 @@
 
 Network Working Group                                         S. Farrell
 Internet-Draft                                    Trinity College Dublin
-Intended status: Informational                            April 24, 2019
-Expires: October 26, 2019
+Intended status: Informational                            April 25, 2019
+Expires: October 27, 2019
 
 
                  We're gonna need a bigger threat model
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 26, 2019.
+   This Internet-Draft will expire on October 27, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Farrell                 Expires October 26, 2019                [Page 1]
+Farrell                 Expires October 27, 2019                [Page 1]
 
 Internet-Draft                     etm                        April 2019
 
@@ -75,7 +75,7 @@ Table of Contents
      2.8.  Smart televisions . . . . . . . . . . . . . . . . . . . .   6
      2.9.  So-called Internet of things  . . . . . . . . . . . . . .   6
    3.  Inadvertent adversarial behaviours  . . . . . . . . . . . . .   7
-   4.  Possible directions for an expanded threat model  . . . . . .   7
+   4.  Possible directions for an expanded threat model  . . . . . .   8
      4.1.  Develop a BCP for privacy considerations  . . . . . . . .   8
      4.2.  Consider the user perspective . . . . . . . . . . . . . .   8
      4.3.  Consider ABuse-cases as well as use-cases . . . . . . . .   8
@@ -93,7 +93,7 @@ Table of Contents
      9.1.  Informative References  . . . . . . . . . . . . . . . . .  10
      9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
    Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  14
-     A.1.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  14
+     A.1.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  15
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Farrell                 Expires October 26, 2019                [Page 2]
+Farrell                 Expires October 27, 2019                [Page 2]
 
 Internet-Draft                     etm                        April 2019
 
@@ -165,7 +165,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 26, 2019                [Page 3]
+Farrell                 Expires October 27, 2019                [Page 3]
 
 Internet-Draft                     etm                        April 2019
 
@@ -221,7 +221,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 26, 2019                [Page 4]
+Farrell                 Expires October 27, 2019                [Page 4]
 
 Internet-Draft                     etm                        April 2019
 
@@ -277,7 +277,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 26, 2019                [Page 5]
+Farrell                 Expires October 27, 2019                [Page 5]
 
 Internet-Draft                     etm                        April 2019
 
@@ -333,7 +333,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 26, 2019                [Page 6]
+Farrell                 Expires October 27, 2019                [Page 6]
 
 Internet-Draft                     etm                        April 2019
 
@@ -367,33 +367,38 @@ Internet-Draft                     etm                        April 2019
 
       *  3 billion accounts: yahoo [11]
 
-      *  many millions at risk: telcos selling location data [12]
+      *  "up to 600M" account passwords stored in clear: facebook [12]
 
-      *  50 million accounts: facebook [13]
+      *  many millions at risk: telcos selling location data [13]
 
-      *  14 million accounts: verizon [14]
+      *  50 million accounts: facebook [14]
 
-      *  "hundreds of thousands" of accounts: google [15]
+      *  14 million accounts: verizon [15]
 
-      *  unknown numbers, some email content exposed: microsoft [16]
+      *  "hundreds of thousands" of accounts: google [16]
+
+      *  unknown numbers, some email content exposed: microsoft [17]
 
    o  Breaches of smaller service providers: Too many to enumerate,
       sadly
+
+
+
+
+
+
+
+
+Farrell                 Expires October 27, 2019                [Page 7]
+
+Internet-Draft                     etm                        April 2019
+
 
 4.  Possible directions for an expanded threat model
 
    As we believe useful conclusions in this space require community
    consensus, we won't offer definitive descriptions of an expanded
    threat model but we will call out some potential directions that
-
-
-
-
-Farrell                 Expires October 26, 2019                [Page 7]
-
-Internet-Draft                     etm                        April 2019
-
-
    could be explored at the DEDR workshop and thereafter, if there is
    interest in this topic.
 
@@ -437,19 +442,19 @@ Internet-Draft                     etm                        April 2019
    Sophisticated users can deal with some adversarial behaviours in
    applications by using different instances of those applications, for
    example, differently configured web browsers for use in different
+
+
+
+Farrell                 Expires October 27, 2019                [Page 8]
+
+Internet-Draft                     etm                        April 2019
+
+
    contexts.  Applications (including web browsers) and operating
    systems are also building in isolation via use of different processes
    or sandboxing.  Protocol artefacts that relate to uses of such
    isolation mechanisms might be worth considering.  To an extent, the
    IETF has in practice already recognised some of these issues as being
-
-
-
-Farrell                 Expires October 26, 2019                [Page 8]
-
-Internet-Draft                     etm                        April 2019
-
-
    in-scope, e.g.  when considering the linkability issues with
    mechanisms such as TLS session tickets, or QUIC connection
    identifiers.
@@ -464,7 +469,7 @@ Internet-Draft                     etm                        April 2019
    useful for other protocols or technologies.
 
    In addition, legislative requirements such as those imposed by the
-   GDPR for subject access to data [17] could lead to a desire to handle
+   GDPR for subject access to data [18] could lead to a desire to handle
    internal data structures and databases in ways that are reminiscent
    of CT, though clearly with significant authorisation being required
    and without the append-only nature of a CT log.
@@ -493,18 +498,16 @@ Internet-Draft                     etm                        April 2019
    [I-D.ietf-tls-grease] as a way to mitigate on-path ossification.
    While this technique is not likely to prevent any deliberate
    misbehaviours, it may provide a proof-of-concept that network
-   protocol mechanisms can have impact in this space, if we spend the
-   time to try analyse the incentives of the various parties.
 
 
 
-
-
-
-Farrell                 Expires October 26, 2019                [Page 9]
+Farrell                 Expires October 27, 2019                [Page 9]
 
 Internet-Draft                     etm                        April 2019
 
+
+   protocol mechanisms can have impact in this space, if we spend the
+   time to try analyse the incentives of the various parties.
 
 5.  Conclusions
 
@@ -548,19 +551,23 @@ Internet-Draft                     etm                        April 2019
               Security Applications Conference (ACSAC'99) 1999, 1999,
               <https://www.acsac.org/1999/papers/wed-b-1030-john.pdf>.
 
+
+
+
+
+
+
+Farrell                 Expires October 27, 2019               [Page 10]
+
+Internet-Draft                     etm                        April 2019
+
+
    [attitude]
               Chanchary, F. and S. Chiasson, "User Perceptions of
               Sharing, Advertising, and Tracking", Symposium on Usable
               Privacy and Security (SOUPS) 2015, 2015,
               <https://www.usenix.org/conference/soups2015/proceedings/
               presentation/chanchary>.
-
-
-
-Farrell                 Expires October 26, 2019               [Page 10]
-
-Internet-Draft                     etm                        April 2019
-
 
    [cambridge]
               Isaak, J. and M. Hanna, "User Data Privacy: Facebook,
@@ -603,20 +610,17 @@ Internet-Draft                     etm                        April 2019
               DOI 10.17487/RFC1984, August 1996,
               <https://www.rfc-editor.org/info/rfc1984>.
 
-   [RFC2404]  Madson, C. and R. Glenn, "The Use of HMAC-SHA-1-96 within
-              ESP and AH", RFC 2404, DOI 10.17487/RFC2404, November
-              1998, <https://www.rfc-editor.org/info/rfc2404>.
 
 
 
-
-
-
-
-Farrell                 Expires October 26, 2019               [Page 11]
+Farrell                 Expires October 27, 2019               [Page 11]
 
 Internet-Draft                     etm                        April 2019
 
+
+   [RFC2404]  Madson, C. and R. Glenn, "The Use of HMAC-SHA-1-96 within
+              ESP and AH", RFC 2404, DOI 10.17487/RFC2404, November
+              1998, <https://www.rfc-editor.org/info/rfc2404>.
 
    [RFC3552]  Rescorla, E. and B. Korver, "Guidelines for Writing RFC
               Text on Security Considerations", BCP 72, RFC 3552,
@@ -665,11 +669,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-
-
-
-
-Farrell                 Expires October 26, 2019               [Page 12]
+Farrell                 Expires October 27, 2019               [Page 12]
 
 Internet-Draft                     etm                        April 2019
 
@@ -725,7 +725,7 @@ Internet-Draft                     etm                        April 2019
 
 
 
-Farrell                 Expires October 26, 2019               [Page 13]
+Farrell                 Expires October 27, 2019               [Page 13]
 
 Internet-Draft                     etm                        April 2019
 
@@ -751,40 +751,46 @@ Internet-Draft                     etm                        April 2019
 
    [11] https://www.wired.com/story/yahoo-breach-three-billion-accounts/
 
-   [12] https://www.zdnet.com/article/us-telcos-caught-selling-your-
+   [12] https://www.pcmag.com/news/367319/facebook-stored-up-to-600m-
+        user-passwords-in-plain-text
+
+   [13] https://www.zdnet.com/article/us-telcos-caught-selling-your-
         location-data-again-senator-demands-new-laws/
 
-   [13] https://www.cnet.com/news/facebook-breach-affected-50-million-
+   [14] https://www.cnet.com/news/facebook-breach-affected-50-million-
         people/
 
-   [14] https://www.zdnet.com/article/millions-verizon-customer-records-
+   [15] https://www.zdnet.com/article/millions-verizon-customer-records-
         israeli-data/
 
-   [15] https://www.wsj.com/articles/google-exposed-user-data-feared-
+   [16] https://www.wsj.com/articles/google-exposed-user-data-feared-
         repercussions-of-disclosing-to-public-1539017194
 
-   [16] https://motherboard.vice.com/en_us/article/ywyz3x/hackers-could-
+   [17] https://motherboard.vice.com/en_us/article/ywyz3x/hackers-could-
         read-your-hotmail-msn-outlook-microsoft-customer-support
 
-   [17] https://gdpr-info.eu/art-15-gdpr/
+   [18] https://gdpr-info.eu/art-15-gdpr/
 
 Appendix A.  Change Log
 
    This isn't gonna end up as an RFC, but may as well be tidy...
+
+
+
+
+
+
+
+Farrell                 Expires October 27, 2019               [Page 14]
+
+Internet-Draft                     etm                        April 2019
+
 
 A.1.  Changes from -00 to -01
 
    o  I had lots of typos
 
    o  cabo: PR#1 fixed more typos and noted extensbility danger
-
-
-
-
-Farrell                 Expires October 26, 2019               [Page 14]
-
-Internet-Draft                     etm                        April 2019
-
 
 Author's Address
 
@@ -831,10 +837,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-Farrell                 Expires October 26, 2019               [Page 15]
+Farrell                 Expires October 27, 2019               [Page 15]
