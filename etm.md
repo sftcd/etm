@@ -3,7 +3,7 @@
    Title = "We're gonna need a bigger threat model"
    abbrev = "etm"
    category = "info"
-   docName = "draft-farrell-etm-01"
+   docName = "draft-farrell-etm-02"
    ipr = "trust200902"
    area = "Network Working Group"
    keyword = [""]
@@ -229,7 +229,7 @@ network.  It is also the case that the IETF has rough consensus to provide
 better, and not weaker, security and privacy, which includes confidentiality
 services. The IETF has maintained that consensus
 over three decades, despite repeated (and repetitive;-) debates on the topic.
-That consensus is represented in [@?RFC2404], BCP 200 [@?RFC1984] and more
+That consensus is represented in [@?RFC2804], BCP 200 [@?RFC1984] and more
 latterly, the above-mentioned BCP 188 as well as in the numerous RFCs
 referencing those works.  The probability that discussion of expanding our
 threat model leads to a change in that rough consensus seems highly remote.
@@ -542,6 +542,10 @@ comments on an earlier version of the text.
 # Change Log
 
 This isn't gonna end up as an RFC, but may as well be tidy...
+
+## Changes from -01 to -02
+
+- Oops - got an RFC number wrong in reference
 
 ## Changes from -00 to -01
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="info" docName="draft-farrell-etm-01">
+<rfc ipr="trust200902" category="info" docName="draft-farrell-etm-02">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -91,7 +91,7 @@ network.  It is also the case that the IETF has rough consensus to provide
 better, and not weaker, security and privacy, which includes confidentiality
 services. The IETF has maintained that consensus
 over three decades, despite repeated (and repetitive;-) debates on the topic.
-That consensus is represented in <xref target="RFC2404"/>, BCP 200 <xref target="RFC1984"/> and more
+That consensus is represented in <xref target="RFC2804"/>, BCP 200 <xref target="RFC1984"/> and more
 latterly, the above-mentioned BCP 188 as well as in the numerous RFCs
 referencing those works.  The probability that discussion of expanding our
 threat model leads to a change in that rough consensus seems highly remote.
@@ -434,7 +434,7 @@ comments on an earlier version of the text.
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-tls-grease.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.nottingham-for-the-users.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1984.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2404.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2804.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3552.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6454.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6962.xml"?>
@@ -583,6 +583,14 @@ comments on an earlier version of the text.
 <section anchor="change-log" title="Change Log">
 <t>This isn't gonna end up as an RFC, but may as well be tidy...
 </t>
+
+<section anchor="changes-from-01-to-02" title="Changes from -01 to -02">
+<t>
+<list style="symbols">
+<t>Oops - got an RFC number wrong in reference</t>
+</list>
+</t>
+</section>
 
 <section anchor="changes-from-00-to-01" title="Changes from -00 to -01">
 <t>

@@ -9,7 +9,7 @@ Expires: November 2, 2019
 
 
                  We're gonna need a bigger threat model
-                          draft-farrell-etm-01
+                          draft-farrell-etm-02
 
 Abstract
 
@@ -93,7 +93,8 @@ Table of Contents
      9.1.  Informative References  . . . . . . . . . . . . . . . . .  10
      9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
    Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  15
-     A.1.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  15
+     A.1.  Changes from -01 to -02 . . . . . . . . . . . . . . . . .  15
+     A.2.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  15
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
@@ -104,8 +105,7 @@ Table of Contents
    [RFC3552], Section 3 defines an "Internet Threat Model" which has
    been commonly used when developing Internet protocols.  That assumes
    that "the end-systems engaging in a protocol exchange have not
-   themselves been compromised."  RFC 3552 is a formal part of of the
-   IETF's process as it is also BCP72.
+
 
 
 
@@ -113,6 +113,9 @@ Farrell                 Expires November 2, 2019                [Page 2]
 
 Internet-Draft                     etm                          May 2019
 
+
+   themselves been compromised."  RFC 3552 is a formal part of of the
+   IETF's process as it is also BCP72.
 
    Since RFC 3552 was written, we have seen a greater emphasis on
    considering privacy and [RFC6973] provides privacy guidance for
@@ -149,7 +152,7 @@ Internet-Draft                     etm                          May 2019
    to provide better, and not weaker, security and privacy, which
    includes confidentiality services.  The IETF has maintained that
    consensus over three decades, despite repeated (and repetitive;-)
-   debates on the topic.  That consensus is represented in [RFC2404],
+   debates on the topic.  That consensus is represented in [RFC2804],
    BCP 200 [RFC1984] and more latterly, the above-mentioned BCP 188 as
    well as in the numerous RFCs referencing those works.  The
    probability that discussion of expanding our threat model leads to a
@@ -159,9 +162,6 @@ Internet-Draft                     etm                          May 2019
    description of such an expanded threat model.  We argue that ignoring
    this aspect of deployed reality may not bode well for Internet
    protocol development.
-
-
-
 
 
 
@@ -631,9 +631,9 @@ Internet-Draft                     etm                          May 2019
               DOI 10.17487/RFC1984, August 1996,
               <https://www.rfc-editor.org/info/rfc1984>.
 
-   [RFC2404]  Madson, C. and R. Glenn, "The Use of HMAC-SHA-1-96 within
-              ESP and AH", RFC 2404, DOI 10.17487/RFC2404, November
-              1998, <https://www.rfc-editor.org/info/rfc2404>.
+   [RFC2804]  IAB and IESG, "IETF Policy on Wiretapping", RFC 2804,
+              DOI 10.17487/RFC2804, May 2000,
+              <https://www.rfc-editor.org/info/rfc2804>.
 
    [RFC3552]  Rescorla, E. and B. Korver, "Guidelines for Writing RFC
               Text on Security Considerations", BCP 72, RFC 3552,
@@ -798,7 +798,11 @@ Appendix A.  Change Log
 
    This isn't gonna end up as an RFC, but may as well be tidy...
 
-A.1.  Changes from -00 to -01
+A.1.  Changes from -01 to -02
+
+   o  Oops - got an RFC number wrong in reference
+
+A.2.  Changes from -00 to -01
 
    o  Made a bunch more edits and added more references
 
@@ -812,10 +816,6 @@ Author's Address
    Trinity College Dublin
 
    Email: stephen.farrell@cs.tcd.ie
-
-
-
-
 
 
 
