@@ -223,19 +223,21 @@ perhaps inevitably will) involve discussion of weakening how confidentiality is
 provided in Internet protocols. Whilst it may superficially seem to be the case
 that encouraging in-network interception could help with detection of
 adversarial application behaviours, such a position is clearly mistaken once
-one notes that adding middleboxes that can themselves be adverserial cannot be
+one notes that adding middleboxes that can themselves be adversarial cannot be
 a solution to the problem of possibly encountering adversarial code on the
 network.  It is also the case that the IETF has rough consensus to provide
-better, and not weaker, security and privacy, and has maintained that consensus
+better, and not weaker, security and privacy, which includes confidentiality
+services. The IETF has maintained that consensus
 over three decades, despite repeated (and repetitive;-) debates on the topic.
 That consensus is represented in [@?RFC2404], BCP 200 [@?RFC1984] and more
 latterly, the above-mentioned BCP 188 as well as in the numerous RFCs
 referencing those works.  The probability that discussion of expanding our
 threat model leads to a change in that rough consensus seems highly remote.
 
-It is not clear if the IETF will reach rough consensus on a description of such
-an expanded threat model, but we further argue that ignoring this aspect of
-deployed reality may not bode well for Internet protocol development.
+However, it is not clear if the IETF will reach rough consensus on a
+description of such an expanded threat model. We argue that
+ignoring this aspect of deployed reality may not bode well for Internet
+protocol development.
 
 Absent such an expanded threat model, we expect to see more of a mismatch
 between expectaions and the deployment reality for some Internet protocols. 
@@ -243,6 +245,10 @@ between expectaions and the deployment reality for some Internet protocols.
 This internet-draft is a submission to the IAB's DEDR
 [workshop](https://www.iab.org/activities/workshops/dedr-workshop/) and is not
 intended to become an RFC.
+
+We note that another author has independently proposed changes to the Internet threat
+model for related, but different, reasons, [@?I-D.arkko-arch-internet-threat-model]
+also as a submission to the DEDR workshop.
 
 We are saddened by, and apologise for, the somewhat dystopian impression that
 this document may impart - hopefully, there's a bit of hope at the end;-)
@@ -256,12 +262,13 @@ from simple fraud, to credential theft, surveillance and contributing to DDoS
 attacks.  This is not intended to be a comprehensive nor complete survey, but
 to motivate us to consider deliberate adversarial behaviour by applications.
 
-Finally, we note that while we have these examples of deliberate adversarial
+While we have these examples of deliberate adversarial
 behaviour, there are also many examples of application developers doing their
 best to protect the security and privacy of their users or customers. That's
 just the same as the case today where we need to consider in-network actors
 as potential adversaries despite the many examples of network operators who
-do act primarily in the best interests of their users.
+do act primarily in the best interests of their users. So this section is
+not intended as a slur on all or some application developers.
 
 ## Malware in curated application stores
 
@@ -269,7 +276,7 @@ Despite the best efforts of curators, so-called App-Stores frequently
 distribute malware of many kinds and one recent study [@?curated]
 claims that simple obfuscation enables malware to avoid detection by
 even sophisticated operators. Given the
-scale of these deployments, even a small percentage of malware-infected
+scale of these deployments, ditribution of even a small percentage of malware-infected
 applictions can affect a huge number of people.
 
 ## Virtual private networks (VPNs)
@@ -282,12 +289,12 @@ countries in which they provide vantage points. [@?vpns]
 ## Compromised (home) networks
 
 What we normally might consider network devices such as home routers do also run
-applications that can end up being adversarial, for example DNS and DHCP
-attacks from home routers, or other devices in the home. One study [home]
+applications that can end up being adversarial, for example running DNS and DHCP
+attacks from home routers targeting other devices in the home. One study [home]
 reports on a 2011 attack that affected 4.5 million DSL modems in Brazil.  The
 absence of software update [@?RFC8240] has been a major cause of these issues
-and rises to the level that considering this as intentional behaviour is
-warranted.
+and rises to the level that considering this as intentional behaviour by 
+device vendors who have chosen this path is warranted.
 
 ## Web browsers
 
@@ -387,14 +394,14 @@ control](https://security.stackexchange.com/questions/100577/creating-botnet-cc-
 example, lots of Amazon S3 leaks showing that careless admins can too easily
 cause application server data to become available to adversaries
 
-- Virtualisation exposing secrets, for example [Meltdown and
+- Virtualisation exposing secrets, for example, [Meltdown and
   Spectre](https://www.us-cert.gov/ncas/alerts/TA18-004A) and similar
 side-channels 
 
-- Compromised badly-maintained web sites, for example that have led to massive
+- Compromised badly-maintained web sites, that for example, have led to massive
   online [databases of passwords](https://haveibeenpwned.com/Passwords)
 
-- Supply-chain attacks, for example the [Target
+- Supply-chain attacks, for example, the [Target
   attack](https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/) 
 
 - Breaches of major service providers, that many of us might have assumed would
@@ -452,7 +459,7 @@ things regardless, if they feel the need.
 
 ## Isolation
 
-Sophisticated users can deal with some adversarial behaviours in applications
+Sophisticated users can sometimes deal with adversarial behaviours in applications
 by using different instances of those applications, for example, differently
 configured web browsers for use in different contexts.  Applications (including
 web browsers) and operating systems are also building in isolation via use of
@@ -538,7 +545,8 @@ This isn't gonna end up as an RFC, but may as well be tidy...
 
 ## Changes from -00 to -01
 
-- I had lots of typos
+- Made a bunch more edits and added more references
+- I had lots of typos (as always:-)
 - cabo: PR#1 fixed more typos and noted extensbility danger
 
 
