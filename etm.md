@@ -233,7 +233,7 @@ https://github.com/sftcd/etm ]]
 commonly used when developing Internet protocols.  That assumes that "the
 end-systems engaging in a protocol exchange have not themselves been
 compromised." RFC 3552 is a formal part of of the IETF's process as it is also
-BCP72.
+BCP72. 
 
 Since RFC 3552 was written, we have seen a greater emphasis on considering
 privacy and [@?RFC6973] provides privacy guidance for protocol developers. RFC
@@ -283,7 +283,6 @@ between expectaions and the deployment reality for some Internet protocols.
 
 Version -02 of this internet-draft was a submission to the IAB's DEDR
 [workshop](https://www.iab.org/activities/workshops/dedr-workshop/).
-
 We note that another author independently proposed changes to the Internet threat
 model for related, but different, reasons, [@?I-D.arkko-arch-internet-threat-model]
 also as a submission to the DEDR workshop.
@@ -521,6 +520,18 @@ we won't offer definitive descriptions of an expanded threat model
 but we will call out some potential directions that could be explored as
 one follow-up to the DEDR workshop and thereafter, if there is interest in this topic.
 
+Before doing so, it is worth calling out one of the justifications for the RFC
+3553 definition of the Internet threat model which is that going beyond an
+assumption that protocol endpoints have not been compromised rapidly introduces
+complexity into the analysis.  We do have plenty of experience that when
+security and privacy solutions add too much complexity and/or are seen to add
+risks without benefits, those tend not to be deployed. One of the risks in
+expanding our threat model that we need to recognise is that the end result
+could be too complex, might not be applied during protocol design, or worse,
+could lead to flawed risk analyses. One of the constraints on work on an
+expanded threat model is therefore that the result has to remain usable by
+protocol designers who are not security or privacy experts.
+
 ## Develop a BCP for privacy considerations
 
 It may be time for the IETF to develop a BCP for privacy
@@ -622,10 +633,26 @@ says:
     the client and authorization server may be under control of an
     attacker and collude to trick a user to gain access to resources.
 
-
 It could be useful to attempt to derive a more abstract threat 
 model from that RFC that considers threats in more generic 
 multi-party contexts. 
+
+## One (or more) endpoint may be compromised
+
+The quote from OAuth above also has another aspect - it considers the effect of
+compromised endpoints on those that are not compromised.  It may therefore be
+interesting to consider the consequeneces that would follow from this OLD/NEW
+change to RFC3552 
+
+OLD:
+    In general, we assume that the end-systems engaging in a protocol
+    exchange have not themselves been compromised.
+
+NEW:
+
+    In general, we assume that one of the protocol engines engaging in a
+    protocol exchange has not been compromised at the run-time of the
+    exchange.
 
 ## Look again at how well we're securing infrastructure
 
@@ -656,15 +683,28 @@ less common, due to protocol design flaws.
 
 ## Don't think in terms of hosts
 
-More and more, protocol endpoints are not running on what used be
-understood as a host system. [[Add ref to Ted/Brian draft.]] 
+More and more, protocol endpoints are not being executed on what used be
+understood as a host system. The web and Javascript model clearly  differs from
+traditional host models, but so do most server-side deployments these days,
+thanks to virtualisation.
 
+As yes unpublished work on this topic within the IAB
+[stackevo](https://github.com/stackevo/endpoint-draft/blob/master/draft-trammell-whats-an-endpoint.md)
+programme, appears to posit the same kind of thesis. In the stackevo case, that
+work would presumably lead to some new definition of protocol endpoint, but
+(consensus on) such a definition may not be needed for an expanded threat
+model.  For this work, it may be sufficient to note that protocol endpoints can
+no longer be considered to be executing on a traditional host, to assume (at
+protocol design time) that all endpoints will be run in a virtualised
+environment where co-tenants and (sometimes) hypervisors are adversaries, and
+to then call for analysis of such scenarios.
 
 # Conclusions
 
 At this stage we don't think it approriate to claim that any strong conclusion
 can be reached based on the above. We do however, claim that the is a topic
-that could be worth discussion at the DEDR workshop and elsewhere.
+that could be worth discussion as part of the follow-up to at the DEDR workshop 
+and more generally within the IETF.
 
 # Security Considerations
 
