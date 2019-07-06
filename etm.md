@@ -3,7 +3,7 @@
    Title = "We're gonna need a bigger threat model"
    abbrev = "etm"
    category = "info"
-   docName = "draft-farrell-etm-02"
+   docName = "draft-farrell-etm-03"
    ipr = "trust200902"
    area = "Network Working Group"
    keyword = [""]
@@ -17,6 +17,7 @@
      email="stephen.farrell@cs.tcd.ie"
 
 %%%
+
 
 <reference anchor="tracking" target="https://scholarspace.manoa.hawaii.edu/bitstream/10125/50485/paper0598.pdf">
 <front>
@@ -40,6 +41,19 @@
     <date year="2018"/>
 </front>
 <seriesInfo name="" value="Proceedings of the 51st Hawaii International Conference on System Sciences"/>
+</reference>
+
+<reference anchor="bloatware" target="https://arxiv.org/pdf/1905.02713.pdf">
+<front>
+    <title>An Analysis of Pre-installed Android Software</title>
+    <author initials="G." surname="Gamba" fullname=" Julien Gamba"/>
+    <author initials="M." surname="Rashed" fullname="Mohammed Rashed"/>
+    <author initials="A." surname="Razaghpanah" fullname="Abbas Razaghpanah"/>
+    <author initials="J." surname="Tapiado" fullname="Juan Tapiadorr"/>
+    <author initials="N." surname="Vallina-Rodriguez" fullname="Narseo Vallina-Rodriguez"/>
+    <date year="2019"/>
+</front>
+<seriesInfo name="" value="arXiv preprint arXiv:1905.02713 (2019)."/>
 </reference>
 
 <reference anchor="unread" target="https://doi.org/10.1080/1369118X.2018.1486870">
@@ -175,13 +189,38 @@
 <seriesInfo name="ACM SIGCOMM Computer Communication Review" value="41(4), 363-374. 2011"/>
 </reference>
 
+<reference anchor="hijackdet" target="https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/schlamp_TMA_1_2015.pdf">
+<front>
+<title>Investigating the nature of routing anomalies: Closing in on subprefix hijacking attacks</title>
+    <author initials="J." surname="Schlamp" fullname="Johan Schlamp"/>
+    <author initials="R." surname="Holz" fullname="Ralph Holz"/>
+    <author initials="O." surname="Gasser" fullname="Oliver Gasser"/>
+    <author initials="A." surname="Korste" fullname="Andreas Korste"/>
+    <author initials="Q." surname="Jacquemart" fullname="Quentin Jacquemart"/>
+    <author initials="G." surname="Carle" fullname="Georg Carle"/>
+    <author initials="E." surname="Biersack" fullname="Ernst W. Biersack"/>
+    <date year="2015"/>
+</front>
+<seriesInfo name="" value="International Workshop on Traffic Monitoring and Analysis, pp. 173-187. Springer, Cham, 2015."/>
+</reference>
+
+<reference anchor="bgphijack" target="https://arxiv.org/pdf/1801.02918.pdf">
+<front>
+<title>A survey among network operators on BGP prefix hijacking</title>
+    <author initials="P." surname="Sermpezis" fullname="Sermpezis, Pavlos"/>
+    <author initials="V." surname="Kotronis" fullname="Vasileios Kotronis"/> 
+    <author initials="A." surname="Dainotti" fullname="Alberto Dainotti"/>
+    <author initials="X." surname="Dimitropoulos" fullname="Xenofontas Dimitropoulos"/>
+    <date year="2018"/>
+</front>
+<seriesInfo name="" value="ACM SIGCOMM Computer Communication Review 48, no. 1 (2018): 64-69."/>
+</reference>
+
 .# Abstract
 
 We argue that an expanded threat model is needed for Internet protocol development
 as protocol endpoints can no longer be considered to be generally trustworthy 
 for any general definition of "trustworthy." 
-
-This draft will be a submission to the DEDR IAB workshop.
 
 {mainmatter}
 
@@ -242,11 +281,10 @@ protocol development.
 Absent such an expanded threat model, we expect to see more of a mismatch
 between expectaions and the deployment reality for some Internet protocols. 
 
-This internet-draft is a submission to the IAB's DEDR
-[workshop](https://www.iab.org/activities/workshops/dedr-workshop/) and is not
-intended to become an RFC.
+Version -02 of this internet-draft was a submission to the IAB's DEDR
+[workshop](https://www.iab.org/activities/workshops/dedr-workshop/).
 
-We note that another author has independently proposed changes to the Internet threat
+We note that another author independently proposed changes to the Internet threat
 model for related, but different, reasons, [@?I-D.arkko-arch-internet-threat-model]
 also as a submission to the DEDR workshop.
 
@@ -377,6 +415,64 @@ in some cases this may be due to incompetence rather than being deliberately
 adversarial behaviour, the levels of incompetence frequently seen imply that it
 is valid to consider such cases as not being accidental.
 
+## Attacks leveraging compromised high-level DNS infrastructure 
+
+Recent
+[attacks](https://krebsonsecurity.com/2019/02/a-deep-dive-on-the-recent-widespread-dns-hijacking-attacks/)
+against DNS infrastructure enable subsequent targetted attacks on specific
+application layer sources or destinations. The general method appears to be to
+attack DNS infrastructure, in these cases infrastructure that is towards the
+top of the DNS naming hierarchy and "far" from the presumed targets, in order
+to be able to fake DNS responses to a PKI, thereby acquiring TLS server
+certificates so as to subsequently attack TLS connections from clients to
+services (with clients directed to an attacker-owned server via additional fake
+DNS responses). 
+
+Attackers in these cases seem well resourced and patient - with
+"practice" runs over months and with attack durations being infrequent and
+short (e.g. 1 hour) before the attacker withdraws.  
+
+These are sophisticated multi-protocol attacks, where weaknesses related to
+deployment of one protocol (DNS) bootstrap attacks on another protocol (e.g.
+IMAP/TLS), via abuse of a 3rd protocol (ACME), partly in order to capture user
+IMAP login credentials, so as to be able to harvest message store content from
+a real message store. 
+
+The fact that many mail clients regularly poll their message store means that a
+1-hour attack is quite likely to harvest many cleartext passwords or crackable
+password hashes.  The real IMAP server in such a case just sees fewer
+connections during the "live" attack, and some additional connections later.
+Even heavy email users in such cases that might notice a slight gap in email
+arrivals, would likely attribute that to some network or service outage.  
+
+In many of these cases the paucity of DNSSEC-signed zones (about 1% of existing
+zones) and the fact that many resolvers do not enforce DNSSEC validation (e.g.,
+in some mobile operating systems) assisted the attackers. 
+
+It is also notable that some of the personnel dealing with these attacks
+against infrastructure entites are authors of RFCs and Internet-drafts. That we
+haven't provided protocol tools that better protect against these kinds of
+attack ought hit "close to home" for the IETF.
+
+In terms of the overall argument being made here, the PKI and DNS interactions,
+and the last step in the "live" attack all involve interaction with a
+deliberately adversarial application. Later, use of acquired login credentials
+to harvest message store content involves an adversarial client application.
+It all cases, a TLS implementation's PKI and TLS protocol code will see the
+fake endpoints as protocol-valid, even if, in the real world, they are clearly
+fake. This appears to be a good argument that our current threat model is
+lacking in some respect(s), even as applied to our currently most important
+security protocol (TLS).
+
+## BGP hijacking
+
+There is a clear history of BGP hijacking [@?bgphijack] being used to ensure endpoints
+connect to adversarial applications. As in the previous example, such hijacks
+can be used to trick a PKI into issuing a certificate for a fake entity. Indeed
+one study [@?hijackdet] used the emergence of new web server TLS key pairs during
+the event, (detected via Internet-wide scans), as a distinguisher between
+one form of deliberate BGP hijacking and indadvertent route leaks. 
+
 # Inadvertent adversarial behaviours
 
 Not all adversarial behaviour by applications is deliberate, some is likely due
@@ -401,8 +497,9 @@ side-channels
 - Compromised badly-maintained web sites, that for example, have led to massive
   online [databases of passwords](https://haveibeenpwned.com/Passwords)
 
-- Supply-chain attacks, for example, the [Target
-  attack](https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/) 
+- Supply-chain attacks, for example, the 
+[Target attack](https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/) 
+  or malware within pre-installed applications on Android phones. [@?bloatware]
 
 - Breaches of major service providers, that many of us might have assumed would
   be sufficiently capable to be the best large-scale "Identity providers", for
@@ -421,8 +518,8 @@ example:
 
 As we believe useful conclusions in this space require community consensus,
 we won't offer definitive descriptions of an expanded threat model
-but we will call out some potential directions that could be explored at the
-DEDR workshop and thereafter, if there is interest in this topic.
+but we will call out some potential directions that could be explored as
+one follow-up to the DEDR workshop and thereafter, if there is interest in this topic.
 
 ## Develop a BCP for privacy considerations
 
@@ -473,9 +570,14 @@ tickets, or QUIC connection identifiers.
 
 Certificate transparency (CT) [@?RFC6962] has been an effective countermeasure
 for X.509 certificate mis-issuance, which used be a known application layer
-misbehaviour in the public web PKI. While the context in which CT operates is
+misbehaviour in the public web PKI. 
+CT can also help with post-facto detection of some infrastructure attacks where
+BGP or DNS weakenesses have been leveraged so that some certification 
+authority is tricked into issuing a certificate for the wrong entity.
+
+While the context in which CT operates is
 very constrained (essentially to the public CAs trusted by web browsers),
-similar approaches could be useful for other protocols or technologies.
+similar approaches could perhaps be useful for other protocols or technologies.
 
 In addition, legislative requirements such as those imposed by the GDPR for
 [subject access to data](https://gdpr-info.eu/art-15-gdpr/) could lead to a
@@ -507,6 +609,57 @@ to prevent any deliberate misbehaviours, it may provide a proof-of-concept that
 network protocol mechanisms can have impact in this space, if we spend the time
 to try analyse the incentives of the various parties.
 
+## Generalise OAuth Threat Model
+
+The OAuth threat model [@?RFC6819] provides an extensive list of threats and
+security considerations for those implementing and deploying OAuth version 2.0 [@?RFC6749].
+That document is perhaps too detailed to serve as useful generic guidance
+but does go beyond the Internet threat model from RFC3552, for example it 
+says: 
+
+    two of the three parties involved in the OAuth protocol may
+    collude to mount an attack against the 3rd party.  For example,
+    the client and authorization server may be under control of an
+    attacker and collude to trick a user to gain access to resources.
+
+
+It could be useful to attempt to derive a more abstract threat 
+model from that RFC that considers threats in more generic 
+multi-party contexts. 
+
+## Look again at how well we're securing infrastructure
+
+Some attacks (e.g. against DNS or routing infrastructure) appear
+to benefit from current infrastructure mechanisms not being 
+deployed, e.g. DNSSEC, RPKI. In the case of DNSSEC, deployment
+is still minimal despite much time having elapsed. This 
+suggests a number of different possible avenues for investigation:
+
+- For any protocol dependent on infrastructure like DNS or BGP, we ought analysse 
+potential outcomes in the event the relevant infrastructure
+has been compromised
+- Protocol designers perhaps ought consider post-facto detection 
+compromise mechanisms in the event that it is infeasible to
+mitigate attacks on infrastructure that is not under local control
+- Despite the sunk costs, it may be worth re-considering infrastructure security mechanisms 
+that have not been deployed, and hence are ineffective.
+
+## Consider recovery from attack as part of protocol design
+
+Recent work on multiparty messaging security primitives
+[@I-D.ietf-mls-architecture] considers "post-compromise security" as an
+inherent part of the design of that protocol. Perhaps protocol designers ought
+generally consider recovery from attack during protocol design - we do know
+that all widely used protocols will at sometime be subject to successful
+attack, whether that is due to deployment or implementation error, or, as is
+less common, due to protocol design flaws.
+
+## Don't think in terms of hosts
+
+More and more, protocol endpoints are not running on what used be
+understood as a host system. [[Add ref to Ted/Brian draft.]] 
+
+
 # Conclusions
 
 At this stage we don't think it approriate to claim that any strong conclusion
@@ -532,16 +685,22 @@ There are no IANA considerations.
 
 # Acknowledgements
 
-We'll happily ack anyone who's interested enough to read and comment on this.
 With no implication that they agree with some or all of the above, thanks to
 Jari Arkko, Carsten Bormann, Christian Huitema and Daniel Kahn Gillmor for
 comments on an earlier version of the text.
+
+Thanks to Jari Arkko, Ted Hardie and Brian Trammell for discussions on this
+topic after they (but not the author) had attended the DEDR workshop.
 
 {backmatter}
 
 # Change Log
 
 This isn't gonna end up as an RFC, but may as well be tidy...
+
+## Changes from -02 to -03
+
+- Integrated some changes based on discussion with Ted, Jari and Brian.
 
 ## Changes from -01 to -02
 

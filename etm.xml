@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="info" docName="draft-farrell-etm-02">
+<rfc ipr="trust200902" category="info" docName="draft-farrell-etm-03">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -27,7 +27,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="May" day="1"/>
+<date year="2019" month="July" day="6"/>
 
 <area>Network Working Group</area>
 <workgroup></workgroup>
@@ -38,8 +38,6 @@
 <t>We argue that an expanded threat model is needed for Internet protocol development
 as protocol endpoints can no longer be considered to be generally trustworthy
 for any general definition of &quot;trustworthy.&quot;
-</t>
-<t>This draft will be a submission to the DEDR IAB workshop.
 </t>
 </abstract>
 
@@ -104,11 +102,10 @@ protocol development.
 <t>Absent such an expanded threat model, we expect to see more of a mismatch
 between expectaions and the deployment reality for some Internet protocols.
 </t>
-<t>This internet-draft is a submission to the IAB's DEDR
-<eref target="https://www.iab.org/activities/workshops/dedr-workshop/">workshop</eref> and is not
-intended to become an RFC.
+<t>Version -02 of this internet-draft was a submission to the IAB's DEDR
+<eref target="https://www.iab.org/activities/workshops/dedr-workshop/">workshop</eref>.
 </t>
-<t>We note that another author has independently proposed changes to the Internet threat
+<t>We note that another author independently proposed changes to the Internet threat
 model for related, but different, reasons, <xref target="I-D.arkko-arch-internet-threat-model"/>
 also as a submission to the DEDR workshop.
 </t>
@@ -249,6 +246,66 @@ adversarial behaviour, the levels of incompetence frequently seen imply that it
 is valid to consider such cases as not being accidental.
 </t>
 </section>
+
+<section anchor="attacks-leveraging-compromised-highlevel-dns-infrastructure" title="Attacks leveraging compromised high-level DNS infrastructure">
+<t>Recent
+<eref target="https://krebsonsecurity.com/2019/02/a-deep-dive-on-the-recent-widespread-dns-hijacking-attacks/">attacks</eref>
+against DNS infrastructure enable subsequent targetted attacks on specific
+application layer sources or destinations. The general method appears to be to
+attack DNS infrastructure, in these cases infrastructure that is towards the
+top of the DNS naming hierarchy and &quot;far&quot; from the presumed targets, in order
+to be able to fake DNS responses to a PKI, thereby acquiring TLS server
+certificates so as to subsequently attack TLS connections from clients to
+services (with clients directed to an attacker-owned server via additional fake
+DNS responses).
+</t>
+<t>Attackers in these cases seem well resourced and patient - with
+&quot;practice&quot; runs over months and with attack durations being infrequent and
+short (e.g. 1 hour) before the attacker withdraws.
+</t>
+<t>These are sophisticated multi-protocol attacks, where weaknesses related to
+deployment of one protocol (DNS) bootstrap attacks on another protocol (e.g.
+IMAP/TLS), via abuse of a 3rd protocol (ACME), partly in order to capture user
+IMAP login credentials, so as to be able to harvest message store content from
+a real message store.
+</t>
+<t>The fact that many mail clients regularly poll their message store means that a
+1-hour attack is quite likely to harvest many cleartext passwords or crackable
+password hashes.  The real IMAP server in such a case just sees fewer
+connections during the &quot;live&quot; attack, and some additional connections later.
+Even heavy email users in such cases that might notice a slight gap in email
+arrivals, would likely attribute that to some network or service outage.
+</t>
+<t>In many of these cases the paucity of DNSSEC-signed zones (about 1% of existing
+zones) and the fact that many resolvers do not enforce DNSSEC validation (e.g.,
+in some mobile operating systems) assisted the attackers.
+</t>
+<t>It is also notable that some of the personnel dealing with these attacks
+against infrastructure entites are authors of RFCs and Internet-drafts. That we
+haven't provided protocol tools that better protect against these kinds of
+attack ought hit &quot;close to home&quot; for the IETF.
+</t>
+<t>In terms of the overall argument being made here, the PKI and DNS interactions,
+and the last step in the &quot;live&quot; attack all involve interaction with a
+deliberately adversarial application. Later, use of acquired login credentials
+to harvest message store content involves an adversarial client application.
+It all cases, a TLS implementation's PKI and TLS protocol code will see the
+fake endpoints as protocol-valid, even if, in the real world, they are clearly
+fake. This appears to be a good argument that our current threat model is
+lacking in some respect(s), even as applied to our currently most important
+security protocol (TLS).
+</t>
+</section>
+
+<section anchor="bgp-hijacking" title="BGP hijacking">
+<t>There is a clear history of BGP hijacking <xref target="bgphijack"/> being used to ensure endpoints
+connect to adversarial applications. As in the previous example, such hijacks
+can be used to trick a PKI into issuing a certificate for a fake entity. Indeed
+one study <xref target="hijackdet"/> used the emergence of new web server TLS key pairs during
+the event, (detected via Internet-wide scans), as a distinguisher between
+one form of deliberate BGP hijacking and indadvertent route leaks.
+</t>
+</section>
 </section>
 
 <section anchor="inadvertent-adversarial-behaviours" title="Inadvertent adversarial behaviours">
@@ -273,8 +330,9 @@ Spectre</eref> and similar
 side-channels</t>
 <t>Compromised badly-maintained web sites, that for example, have led to massive
 online <eref target="https://haveibeenpwned.com/Passwords">databases of passwords</eref></t>
-<t>Supply-chain attacks, for example, the <eref target="https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/">Target
-attack</eref></t>
+<t>Supply-chain attacks, for example, the
+<eref target="https://www.zdnet.com/article/how-hackers-stole-millions-of-credit-card-records-from-target/">Target attack</eref>
+or malware within pre-installed applications on Android phones. <xref target="bloatware"/></t>
 <t>Breaches of major service providers, that many of us might have assumed would
 be sufficiently capable to be the best large-scale &quot;Identity providers&quot;, for
 example:
@@ -295,8 +353,8 @@ example:
 <section anchor="possible-directions-for-an-expanded-threat-model" title="Possible directions for an expanded threat model">
 <t>As we believe useful conclusions in this space require community consensus,
 we won't offer definitive descriptions of an expanded threat model
-but we will call out some potential directions that could be explored at the
-DEDR workshop and thereafter, if there is interest in this topic.
+but we will call out some potential directions that could be explored as
+one follow-up to the DEDR workshop and thereafter, if there is interest in this topic.
 </t>
 
 <section anchor="develop-a-bcp-for-privacy-considerations" title="Develop a BCP for privacy considerations">
@@ -352,9 +410,14 @@ tickets, or QUIC connection identifiers.
 <section anchor="transparency" title="Transparency">
 <t>Certificate transparency (CT) <xref target="RFC6962"/> has been an effective countermeasure
 for X.509 certificate mis-issuance, which used be a known application layer
-misbehaviour in the public web PKI. While the context in which CT operates is
+misbehaviour in the public web PKI.
+CT can also help with post-facto detection of some infrastructure attacks where
+BGP or DNS weakenesses have been leveraged so that some certification
+authority is tricked into issuing a certificate for the wrong entity.
+</t>
+<t>While the context in which CT operates is
 very constrained (essentially to the public CAs trusted by web browsers),
-similar approaches could be useful for other protocols or technologies.
+similar approaches could perhaps be useful for other protocols or technologies.
 </t>
 <t>In addition, legislative requirements such as those imposed by the GDPR for
 <eref target="https://gdpr-info.eu/art-15-gdpr/">subject access to data</eref> could lead to a
@@ -390,6 +453,64 @@ network protocol mechanisms can have impact in this space, if we spend the time
 to try analyse the incentives of the various parties.
 </t>
 </section>
+
+<section anchor="generalise-oauth-threat-model" title="Generalise OAuth Threat Model">
+<t>The OAuth threat model <xref target="RFC6819"/> provides an extensive list of threats and
+security considerations for those implementing and deploying OAuth version 2.0 <xref target="RFC6749"/>.
+That document is perhaps too detailed to serve as useful generic guidance
+but does go beyond the Internet threat model from RFC3552, for example it
+says:
+</t>
+
+<figure align="center"><artwork align="center">
+two of the three parties involved in the OAuth protocol may
+collude to mount an attack against the 3rd party.  For example,
+the client and authorization server may be under control of an
+attacker and collude to trick a user to gain access to resources.
+</artwork></figure>
+<t>It could be useful to attempt to derive a more abstract threat
+model from that RFC that considers threats in more generic
+multi-party contexts.
+</t>
+</section>
+
+<section anchor="look-again-at-how-well-were-securing-infrastructure" title="Look again at how well we're securing infrastructure">
+<t>Some attacks (e.g. against DNS or routing infrastructure) appear
+to benefit from current infrastructure mechanisms not being
+deployed, e.g. DNSSEC, RPKI. In the case of DNSSEC, deployment
+is still minimal despite much time having elapsed. This
+suggests a number of different possible avenues for investigation:
+</t>
+<t>
+<list style="symbols">
+<t>For any protocol dependent on infrastructure like DNS or BGP, we ought analysse
+potential outcomes in the event the relevant infrastructure
+has been compromised</t>
+<t>Protocol designers perhaps ought consider post-facto detection
+compromise mechanisms in the event that it is infeasible to
+mitigate attacks on infrastructure that is not under local control</t>
+<t>Despite the sunk costs, it may be worth re-considering infrastructure security mechanisms
+that have not been deployed, and hence are ineffective.</t>
+</list>
+</t>
+</section>
+
+<section anchor="consider-recovery-from-attack-as-part-of-protocol-design" title="Consider recovery from attack as part of protocol design">
+<t>Recent work on multiparty messaging security primitives
+<xref target="I-D.ietf-mls-architecture"/> considers &quot;post-compromise security&quot; as an
+inherent part of the design of that protocol. Perhaps protocol designers ought
+generally consider recovery from attack during protocol design - we do know
+that all widely used protocols will at sometime be subject to successful
+attack, whether that is due to deployment or implementation error, or, as is
+less common, due to protocol design flaws.
+</t>
+</section>
+
+<section anchor="dont-think-in-terms-of-hosts" title="Don't think in terms of hosts">
+<t>More and more, protocol endpoints are not running on what used be
+understood as a host system. [[Add ref to Ted/Brian draft.]]
+</t>
+</section>
 </section>
 
 <section anchor="conclusions" title="Conclusions">
@@ -419,10 +540,12 @@ exploitation harder or more transparent for adversarial applications.
 </section>
 
 <section anchor="acknowledgements" title="Acknowledgements">
-<t>We'll happily ack anyone who's interested enough to read and comment on this.
-With no implication that they agree with some or all of the above, thanks to
+<t>With no implication that they agree with some or all of the above, thanks to
 Jari Arkko, Carsten Bormann, Christian Huitema and Daniel Kahn Gillmor for
 comments on an earlier version of the text.
+</t>
+<t>Thanks to Jari Arkko, Ted Hardie and Brian Trammell for discussions on this
+topic after they (but not the author) had attended the DEDR workshop.
 </t>
 </section>
 
@@ -431,12 +554,15 @@ comments on an earlier version of the text.
 <references title="Informative References">
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.arkko-arch-internet-threat-model.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.iab-protocol-maintenance.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-mls-architecture.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-tls-grease.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.nottingham-for-the-users.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1984.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2804.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3552.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6454.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6819.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6962.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7258.xml"?>
@@ -461,6 +587,29 @@ comments on an earlier version of the text.
 </front>
 <seriesInfo name="Symposium on Usable Privacy and Security (SOUPS)" value="2015"/>
 </reference>
+<reference anchor="bgphijack" target="https://arxiv.org/pdf/1801.02918.pdf">
+<front>
+<title>A survey among network operators on BGP prefix hijacking</title>
+    <author initials="P." surname="Sermpezis" fullname="Sermpezis, Pavlos"/>
+    <author initials="V." surname="Kotronis" fullname="Vasileios Kotronis"/> 
+    <author initials="A." surname="Dainotti" fullname="Alberto Dainotti"/>
+    <author initials="X." surname="Dimitropoulos" fullname="Xenofontas Dimitropoulos"/>
+    <date year="2018"/>
+</front>
+<seriesInfo name="" value="ACM SIGCOMM Computer Communication Review 48, no. 1 (2018): 64-69."/>
+</reference>
+<reference anchor="bloatware" target="https://arxiv.org/pdf/1905.02713.pdf">
+<front>
+    <title>An Analysis of Pre-installed Android Software</title>
+    <author initials="G." surname="Gamba" fullname=" Julien Gamba"/>
+    <author initials="M." surname="Rashed" fullname="Mohammed Rashed"/>
+    <author initials="A." surname="Razaghpanah" fullname="Abbas Razaghpanah"/>
+    <author initials="J." surname="Tapiado" fullname="Juan Tapiadorr"/>
+    <author initials="N." surname="Vallina-Rodriguez" fullname="Narseo Vallina-Rodriguez"/>
+    <date year="2019"/>
+</front>
+<seriesInfo name="" value="arXiv preprint arXiv:1905.02713 (2019)."/>
+</reference>
 <reference anchor="cambridge" target="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8436400">
 <front>
     <title>User Data Privacy: Facebook, Cambridge Analytica, and Privacy Protection</title>
@@ -480,6 +629,20 @@ comments on an earlier version of the text.
     <date year="2018"/>
 </front>
 <seriesInfo name="ACM International Conference on Software Engineering" value="2018"/>
+</reference>
+<reference anchor="hijackdet" target="https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/schlamp_TMA_1_2015.pdf">
+<front>
+<title>Investigating the nature of routing anomalies: Closing in on subprefix hijacking attacks</title>
+    <author initials="J." surname="Schlamp" fullname="Johan Schlamp"/>
+    <author initials="R." surname="Holz" fullname="Ralph Holz"/>
+    <author initials="O." surname="Gasser" fullname="Oliver Gasser"/>
+    <author initials="A." surname="Korste" fullname="Andreas Korste"/>
+    <author initials="Q." surname="Jacquemart" fullname="Quentin Jacquemart"/>
+    <author initials="G." surname="Carle" fullname="Georg Carle"/>
+    <author initials="E." surname="Biersack" fullname="Ernst W. Biersack"/>
+    <date year="2015"/>
+</front>
+<seriesInfo name="" value="International Workshop on Traffic Monitoring and Analysis, pp. 173-187. Springer, Cham, 2015."/>
 </reference>
 <reference anchor="mailbug" target="https://www.degruyter.com/downloadpdf/j/popets.2018.2018.issue-1/popets-2018-0006/popets-2018-0006.pdf">
 <front>
@@ -583,6 +746,14 @@ comments on an earlier version of the text.
 <section anchor="change-log" title="Change Log">
 <t>This isn't gonna end up as an RFC, but may as well be tidy...
 </t>
+
+<section anchor="changes-from-02-to-03" title="Changes from -02 to -03">
+<t>
+<list style="symbols">
+<t>Integrated some changes based on discussion with Ted, Jari and Brian.</t>
+</list>
+</t>
+</section>
 
 <section anchor="changes-from-01-to-02" title="Changes from -01 to -02">
 <t>

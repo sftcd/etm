@@ -4,12 +4,12 @@
 
 Network Working Group                                         S. Farrell
 Internet-Draft                                    Trinity College Dublin
-Intended status: Informational                               May 1, 2019
-Expires: November 2, 2019
+Intended status: Informational                              July 6, 2019
+Expires: January 7, 2020
 
 
                  We're gonna need a bigger threat model
-                          draft-farrell-etm-02
+                          draft-farrell-etm-03
 
 Abstract
 
@@ -17,8 +17,6 @@ Abstract
    protocol development as protocol endpoints can no longer be
    considered to be generally trustworthy for any general definition of
    "trustworthy."
-
-   This draft will be a submission to the DEDR IAB workshop.
 
 Status of This Memo
 
@@ -35,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 2, 2019.
+   This Internet-Draft will expire on January 7, 2020.
 
 Copyright Notice
 
@@ -49,53 +47,72 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
-
-
-
-
-Farrell                 Expires November 2, 2019                [Page 1]
-
-Internet-Draft                     etm                          May 2019
-
-
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+
+
+
+Farrell                  Expires January 7, 2020                [Page 1]
+
+Internet-Draft                     etm                         July 2019
+
+
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Examples of deliberate adversarial behaviour in applications    4
-     2.1.  Malware in curated application stores . . . . . . . . . .   4
+     2.1.  Malware in curated application stores . . . . . . . . . .   5
      2.2.  Virtual private networks (VPNs) . . . . . . . . . . . . .   5
      2.3.  Compromised (home) networks . . . . . . . . . . . . . . .   5
      2.4.  Web browsers  . . . . . . . . . . . . . . . . . . . . . .   5
-     2.5.  Web site policy deception . . . . . . . . . . . . . . . .   5
+     2.5.  Web site policy deception . . . . . . . . . . . . . . . .   6
      2.6.  Tracking bugs in mail . . . . . . . . . . . . . . . . . .   6
      2.7.  Troll farms in online social networks . . . . . . . . . .   6
-     2.8.  Smart televisions . . . . . . . . . . . . . . . . . . . .   6
+     2.8.  Smart televisions . . . . . . . . . . . . . . . . . . . .   7
      2.9.  So-called Internet of things  . . . . . . . . . . . . . .   7
-   3.  Inadvertent adversarial behaviours  . . . . . . . . . . . . .   7
-   4.  Possible directions for an expanded threat model  . . . . . .   8
-     4.1.  Develop a BCP for privacy considerations  . . . . . . . .   8
-     4.2.  Consider the user perspective . . . . . . . . . . . . . .   8
-     4.3.  Consider ABuse-cases as well as use-cases . . . . . . . .   8
-     4.4.  Re-consider protocol design "lore"  . . . . . . . . . . .   8
-     4.5.  Isolation . . . . . . . . . . . . . . . . . . . . . . . .   9
-     4.6.  Transparency  . . . . . . . . . . . . . . . . . . . . . .   9
-     4.7.  Minimise  . . . . . . . . . . . . . . . . . . . . . . . .   9
-     4.8.  Same-Origin Policy  . . . . . . . . . . . . . . . . . . .   9
-     4.9.  Greasing  . . . . . . . . . . . . . . . . . . . . . . . .  10
-   5.  Conclusions . . . . . . . . . . . . . . . . . . . . . . . . .  10
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
-     9.1.  Informative References  . . . . . . . . . . . . . . . . .  10
-     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  15
-     A.1.  Changes from -01 to -02 . . . . . . . . . . . . . . . . .  15
-     A.2.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  15
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
+     2.10. Attacks leveraging compromised high-level DNS
+           infrastructure  . . . . . . . . . . . . . . . . . . . . .   7
+     2.11. BGP hijacking . . . . . . . . . . . . . . . . . . . . . .   8
+   3.  Inadvertent adversarial behaviours  . . . . . . . . . . . . .   8
+   4.  Possible directions for an expanded threat model  . . . . . .   9
+     4.1.  Develop a BCP for privacy considerations  . . . . . . . .   9
+     4.2.  Consider the user perspective . . . . . . . . . . . . . .  10
+     4.3.  Consider ABuse-cases as well as use-cases . . . . . . . .  10
+     4.4.  Re-consider protocol design "lore"  . . . . . . . . . . .  10
+     4.5.  Isolation . . . . . . . . . . . . . . . . . . . . . . . .  10
+     4.6.  Transparency  . . . . . . . . . . . . . . . . . . . . . .  11
+     4.7.  Minimise  . . . . . . . . . . . . . . . . . . . . . . . .  11
+     4.8.  Same-Origin Policy  . . . . . . . . . . . . . . . . . . .  11
+     4.9.  Greasing  . . . . . . . . . . . . . . . . . . . . . . . .  11
+     4.10. Generalise OAuth Threat Model . . . . . . . . . . . . . .  12
+     4.11. Look again at how well we're securing infrastructure  . .  12
+     4.12. Consider recovery from attack as part of protocol design   12
+     4.13. Don't think in terms of hosts . . . . . . . . . . . . . .  13
+   5.  Conclusions . . . . . . . . . . . . . . . . . . . . . . . . .  13
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  13
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  13
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
+     9.1.  Informative References  . . . . . . . . . . . . . . . . .  13
+     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  19
+     A.1.  Changes from -02 to -03 . . . . . . . . . . . . . . . . .  19
+     A.2.  Changes from -01 to -02 . . . . . . . . . . . . . . . . .  19
+     A.3.  Changes from -00 to -01 . . . . . . . . . . . . . . . . .  19
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  19
+
+
+
+
+
+
+
+
+Farrell                  Expires January 7, 2020                [Page 2]
+
+Internet-Draft                     etm                         July 2019
+
 
 1.  Introduction
 
@@ -105,15 +122,6 @@ Table of Contents
    [RFC3552], Section 3 defines an "Internet Threat Model" which has
    been commonly used when developing Internet protocols.  That assumes
    that "the end-systems engaging in a protocol exchange have not
-
-
-
-
-Farrell                 Expires November 2, 2019                [Page 2]
-
-Internet-Draft                     etm                          May 2019
-
-
    themselves been compromised."  RFC 3552 is a formal part of of the
    IETF's process as it is also BCP72.
 
@@ -154,6 +162,14 @@ Internet-Draft                     etm                          May 2019
    consensus over three decades, despite repeated (and repetitive;-)
    debates on the topic.  That consensus is represented in [RFC2804],
    BCP 200 [RFC1984] and more latterly, the above-mentioned BCP 188 as
+
+
+
+Farrell                  Expires January 7, 2020                [Page 3]
+
+Internet-Draft                     etm                         July 2019
+
+
    well as in the numerous RFCs referencing those works.  The
    probability that discussion of expanding our threat model leads to a
    change in that rough consensus seems highly remote.
@@ -163,21 +179,14 @@ Internet-Draft                     etm                          May 2019
    this aspect of deployed reality may not bode well for Internet
    protocol development.
 
-
-
-Farrell                 Expires November 2, 2019                [Page 3]
-
-Internet-Draft                     etm                          May 2019
-
-
    Absent such an expanded threat model, we expect to see more of a
    mismatch between expectaions and the deployment reality for some
    Internet protocols.
 
-   This internet-draft is a submission to the IAB's DEDR workshop [3]
-   and is not intended to become an RFC.
+   Version -02 of this internet-draft was a submission to the IAB's DEDR
+   workshop [3].
 
-   We note that another author has independently proposed changes to the
+   We note that another author independently proposed changes to the
    Internet threat model for related, but different, reasons,
    [I-D.arkko-arch-internet-threat-model] also as a submission to the
    DEDR workshop.
@@ -206,6 +215,17 @@ Internet-Draft                     etm                          May 2019
    users.  So this section is not intended as a slur on all or some
    application developers.
 
+
+
+
+
+
+
+Farrell                  Expires January 7, 2020                [Page 4]
+
+Internet-Draft                     etm                         July 2019
+
+
 2.1.  Malware in curated application stores
 
    Despite the best efforts of curators, so-called App-Stores frequently
@@ -214,17 +234,6 @@ Internet-Draft                     etm                          May 2019
    even sophisticated operators.  Given the scale of these deployments,
    ditribution of even a small percentage of malware-infected
    applictions can affect a huge number of people.
-
-
-
-
-
-
-
-Farrell                 Expires November 2, 2019                [Page 4]
-
-Internet-Draft                     etm                          May 2019
-
 
 2.2.  Virtual private networks (VPNs)
 
@@ -264,6 +273,15 @@ Internet-Draft                     etm                          May 2019
    imposing more stringent requirements on plug-ins for varied security
    reasons.
 
+
+
+
+
+Farrell                  Expires January 7, 2020                [Page 5]
+
+Internet-Draft                     etm                         July 2019
+
+
 2.5.  Web site policy deception
 
    Many web sites today provide some form of privacy policy and terms of
@@ -274,14 +292,6 @@ Internet-Draft                     etm                          May 2019
    [cambridge] is a recent well-publicised case where a service provider
    abused the data of 87 million users via a partnership.  While many
    web site operators claim that they care deeply about privacy, it
-
-
-
-Farrell                 Expires November 2, 2019                [Page 5]
-
-Internet-Draft                     etm                          May 2019
-
-
    seems prudent to assume that some (or most?) do not in fact care
    about user privacy, or at least not in ways with which many of their
    users would agree.  And of course, today's web sites are actually
@@ -320,6 +330,14 @@ Internet-Draft                     etm                          May 2019
    highly that they have failed to invest sufficient effort for
    detection of such troll farms.
 
+
+
+
+Farrell                  Expires January 7, 2020                [Page 6]
+
+Internet-Draft                     etm                         July 2019
+
+
 2.8.  Smart televisions
 
    There have been examples of so-called "smart" televisions spying on
@@ -331,13 +349,6 @@ Internet-Draft                     etm                          May 2019
    would allow them to meaningfully make a decision as to whether or not
    they want to share such data.
 
-
-
-Farrell                 Expires November 2, 2019                [Page 6]
-
-Internet-Draft                     etm                          May 2019
-
-
 2.9.  So-called Internet of things
 
    Many so-called Internet of Things (IoT) devices ("so-called" as all
@@ -348,6 +359,78 @@ Internet-Draft                     etm                          May 2019
    the levels of incompetence frequently seen imply that it is valid to
    consider such cases as not being accidental.
 
+2.10.  Attacks leveraging compromised high-level DNS infrastructure
+
+   Recent attacks [6] against DNS infrastructure enable subsequent
+   targetted attacks on specific application layer sources or
+   destinations.  The general method appears to be to attack DNS
+   infrastructure, in these cases infrastructure that is towards the top
+   of the DNS naming hierarchy and "far" from the presumed targets, in
+   order to be able to fake DNS responses to a PKI, thereby acquiring
+   TLS server certificates so as to subsequently attack TLS connections
+   from clients to services (with clients directed to an attacker-owned
+   server via additional fake DNS responses).
+
+   Attackers in these cases seem well resourced and patient - with
+   "practice" runs over months and with attack durations being
+   infrequent and short (e.g. 1 hour) before the attacker withdraws.
+
+   These are sophisticated multi-protocol attacks, where weaknesses
+   related to deployment of one protocol (DNS) bootstrap attacks on
+   another protocol (e.g.  IMAP/TLS), via abuse of a 3rd protocol
+   (ACME), partly in order to capture user IMAP login credentials, so as
+   to be able to harvest message store content from a real message
+   store.
+
+   The fact that many mail clients regularly poll their message store
+   means that a 1-hour attack is quite likely to harvest many cleartext
+   passwords or crackable password hashes.  The real IMAP server in such
+   a case just sees fewer connections during the "live" attack, and some
+
+
+
+Farrell                  Expires January 7, 2020                [Page 7]
+
+Internet-Draft                     etm                         July 2019
+
+
+   additional connections later.  Even heavy email users in such cases
+   that might notice a slight gap in email arrivals, would likely
+   attribute that to some network or service outage.
+
+   In many of these cases the paucity of DNSSEC-signed zones (about 1%
+   of existing zones) and the fact that many resolvers do not enforce
+   DNSSEC validation (e.g., in some mobile operating systems) assisted
+   the attackers.
+
+   It is also notable that some of the personnel dealing with these
+   attacks against infrastructure entites are authors of RFCs and
+   Internet-drafts.  That we haven't provided protocol tools that better
+   protect against these kinds of attack ought hit "close to home" for
+   the IETF.
+
+   In terms of the overall argument being made here, the PKI and DNS
+   interactions, and the last step in the "live" attack all involve
+   interaction with a deliberately adversarial application.  Later, use
+   of acquired login credentials to harvest message store content
+   involves an adversarial client application.  It all cases, a TLS
+   implementation's PKI and TLS protocol code will see the fake
+   endpoints as protocol-valid, even if, in the real world, they are
+   clearly fake.  This appears to be a good argument that our current
+   threat model is lacking in some respect(s), even as applied to our
+   currently most important security protocol (TLS).
+
+2.11.  BGP hijacking
+
+   There is a clear history of BGP hijacking [bgphijack] being used to
+   ensure endpoints connect to adversarial applications.  As in the
+   previous example, such hijacks can be used to trick a PKI into
+   issuing a certificate for a fake entity.  Indeed one study
+   [hijackdet] used the emergence of new web server TLS key pairs during
+   the event, (detected via Internet-wide scans), as a distinguisher
+   between one form of deliberate BGP hijacking and indadvertent route
+   leaks.
+
 3.  Inadvertent adversarial behaviours
 
    Not all adversarial behaviour by applications is deliberate, some is
@@ -357,44 +440,47 @@ Internet-Draft                     etm                          May 2019
    We very briefly list some such cases:
 
    o  Application abuse for command and control, for example, use of IRC
-      or apache logs for malware command and control [6]
+      or apache logs for malware command and control [7]
 
-   o  Carelessly leaky buckets [7], for example, lots of Amazon S3 leaks
+
+
+
+Farrell                  Expires January 7, 2020                [Page 8]
+
+Internet-Draft                     etm                         July 2019
+
+
+   o  Carelessly leaky buckets [8], for example, lots of Amazon S3 leaks
       showing that careless admins can too easily cause application
       server data to become available to adversaries
 
    o  Virtualisation exposing secrets, for example, Meltdown and Spectre
-      [8] and similar side-channels
+      [9] and similar side-channels
 
    o  Compromised badly-maintained web sites, that for example, have led
-      to massive online databases of passwords [9]
+      to massive online databases of passwords [10]
 
-   o  Supply-chain attacks, for example, the Target attack [10]
+   o  Supply-chain attacks, for example, the Target attack [11] or
+      malware within pre-installed applications on Android phones.
+      [bloatware]
 
    o  Breaches of major service providers, that many of us might have
       assumed would be sufficiently capable to be the best large-scale
       "Identity providers", for example:
 
-      *  3 billion accounts: yahoo [11]
+      *  3 billion accounts: yahoo [12]
 
-      *  "up to 600M" account passwords stored in clear: facebook [12]
+      *  "up to 600M" account passwords stored in clear: facebook [13]
 
-      *  many millions at risk: telcos selling location data [13]
+      *  many millions at risk: telcos selling location data [14]
 
-      *  50 million accounts: facebook [14]
+      *  50 million accounts: facebook [15]
 
-      *  14 million accounts: verizon [15]
+      *  14 million accounts: verizon [16]
 
-      *  "hundreds of thousands" of accounts: google [16]
+      *  "hundreds of thousands" of accounts: google [17]
 
-
-
-Farrell                 Expires November 2, 2019                [Page 7]
-
-Internet-Draft                     etm                          May 2019
-
-
-      *  unknown numbers, some email content exposed: microsoft [17]
+      *  unknown numbers, some email content exposed: microsoft [18]
 
    o  Breaches of smaller service providers: Too many to enumerate,
       sadly
@@ -404,13 +490,21 @@ Internet-Draft                     etm                          May 2019
    As we believe useful conclusions in this space require community
    consensus, we won't offer definitive descriptions of an expanded
    threat model but we will call out some potential directions that
-   could be explored at the DEDR workshop and thereafter, if there is
-   interest in this topic.
+   could be explored as one follow-up to the DEDR workshop and
+   thereafter, if there is interest in this topic.
 
 4.1.  Develop a BCP for privacy considerations
 
    It may be time for the IETF to develop a BCP for privacy
    considerations, possibly starting from [RFC6973].
+
+
+
+
+Farrell                  Expires January 7, 2020                [Page 9]
+
+Internet-Draft                     etm                         July 2019
+
 
 4.2.  Consider the user perspective
 
@@ -442,14 +536,6 @@ Internet-Draft                     etm                          May 2019
    commenter though, people can find ways to extend things regardless,
    if they feel the need.
 
-
-
-
-Farrell                 Expires November 2, 2019                [Page 8]
-
-Internet-Draft                     etm                          May 2019
-
-
 4.5.  Isolation
 
    Sophisticated users can sometimes deal with adversarial behaviours in
@@ -464,17 +550,35 @@ Internet-Draft                     etm                          May 2019
    mechanisms such as TLS session tickets, or QUIC connection
    identifiers.
 
+
+
+
+
+
+
+
+Farrell                  Expires January 7, 2020               [Page 10]
+
+Internet-Draft                     etm                         July 2019
+
+
 4.6.  Transparency
 
    Certificate transparency (CT) [RFC6962] has been an effective
    countermeasure for X.509 certificate mis-issuance, which used be a
-   known application layer misbehaviour in the public web PKI.  While
-   the context in which CT operates is very constrained (essentially to
-   the public CAs trusted by web browsers), similar approaches could be
-   useful for other protocols or technologies.
+   known application layer misbehaviour in the public web PKI.  CT can
+   also help with post-facto detection of some infrastructure attacks
+   where BGP or DNS weakenesses have been leveraged so that some
+   certification authority is tricked into issuing a certificate for the
+   wrong entity.
+
+   While the context in which CT operates is very constrained
+   (essentially to the public CAs trusted by web browsers), similar
+   approaches could perhaps be useful for other protocols or
+   technologies.
 
    In addition, legislative requirements such as those imposed by the
-   GDPR for subject access to data [18] could lead to a desire to handle
+   GDPR for subject access to data [19] could lead to a desire to handle
    internal data structures and databases in ways that are reminiscent
    of CT, though clearly with significant authorisation being required
    and without the append-only nature of a CT log.
@@ -497,15 +601,6 @@ Internet-Draft                     etm                          May 2019
    implicitly assumes that some origins are not as trustworthy as
    others.)
 
-
-
-
-
-Farrell                 Expires November 2, 2019                [Page 9]
-
-Internet-Draft                     etm                          May 2019
-
-
 4.9.  Greasing
 
    The TLS protocol [RFC8446] now supports the use of GREASE
@@ -514,6 +609,75 @@ Internet-Draft                     etm                          May 2019
    misbehaviours, it may provide a proof-of-concept that network
    protocol mechanisms can have impact in this space, if we spend the
    time to try analyse the incentives of the various parties.
+
+
+
+
+Farrell                  Expires January 7, 2020               [Page 11]
+
+Internet-Draft                     etm                         July 2019
+
+
+4.10.  Generalise OAuth Threat Model
+
+   The OAuth threat model [RFC6819] provides an extensive list of
+   threats and security considerations for those implementing and
+   deploying OAuth version 2.0 [RFC6749].  That document is perhaps too
+   detailed to serve as useful generic guidance but does go beyond the
+   Internet threat model from RFC3552, for example it says:
+
+     two of the three parties involved in the OAuth protocol may
+     collude to mount an attack against the 3rd party.  For example,
+     the client and authorization server may be under control of an
+     attacker and collude to trick a user to gain access to resources.
+
+   It could be useful to attempt to derive a more abstract threat model
+   from that RFC that considers threats in more generic multi-party
+   contexts.
+
+4.11.  Look again at how well we're securing infrastructure
+
+   Some attacks (e.g. against DNS or routing infrastructure) appear to
+   benefit from current infrastructure mechanisms not being deployed,
+   e.g.  DNSSEC, RPKI.  In the case of DNSSEC, deployment is still
+   minimal despite much time having elapsed.  This suggests a number of
+   different possible avenues for investigation:
+
+   o  For any protocol dependent on infrastructure like DNS or BGP, we
+      ought analysse potential outcomes in the event the relevant
+      infrastructure has been compromised
+
+   o  Protocol designers perhaps ought consider post-facto detection
+      compromise mechanisms in the event that it is infeasible to
+      mitigate attacks on infrastructure that is not under local control
+
+   o  Despite the sunk costs, it may be worth re-considering
+      infrastructure security mechanisms that have not been deployed,
+      and hence are ineffective.
+
+4.12.  Consider recovery from attack as part of protocol design
+
+   Recent work on multiparty messaging security primitives
+   [I-D.ietf-mls-architecture] considers "post-compromise security" as
+   an inherent part of the design of that protocol.  Perhaps protocol
+   designers ought generally consider recovery from attack during
+   protocol design - we do know that all widely used protocols will at
+   sometime be subject to successful attack, whether that is due to
+   deployment or implementation error, or, as is less common, due to
+   protocol design flaws.
+
+
+
+
+Farrell                  Expires January 7, 2020               [Page 12]
+
+Internet-Draft                     etm                         July 2019
+
+
+4.13.  Don't think in terms of hosts
+
+   More and more, protocol endpoints are not running on what used be
+   understood as a host system.  [[Add ref to Ted/Brian draft.]]
 
 5.  Conclusions
 
@@ -542,10 +706,13 @@ Internet-Draft                     etm                          May 2019
 
 8.  Acknowledgements
 
-   We'll happily ack anyone who's interested enough to read and comment
-   on this.  With no implication that they agree with some or all of the
-   above, thanks to Jari Arkko, Carsten Bormann, Christian Huitema and
-   Daniel Kahn Gillmor for comments on an earlier version of the text.
+   With no implication that they agree with some or all of the above,
+   thanks to Jari Arkko, Carsten Bormann, Christian Huitema and Daniel
+   Kahn Gillmor for comments on an earlier version of the text.
+
+   Thanks to Jari Arkko, Ted Hardie and Brian Trammell for discussions
+   on this topic after they (but not the author) had attended the DEDR
+   workshop.
 
 9.  References
 
@@ -557,9 +724,10 @@ Internet-Draft                     etm                          May 2019
 
 
 
-Farrell                 Expires November 2, 2019               [Page 10]
+
+Farrell                  Expires January 7, 2020               [Page 13]
 
-Internet-Draft                     etm                          May 2019
+Internet-Draft                     etm                         July 2019
 
 
    [abusecases]
@@ -575,6 +743,19 @@ Internet-Draft                     etm                          May 2019
               <https://www.usenix.org/conference/soups2015/proceedings/
               presentation/chanchary>.
 
+   [bgphijack]
+              Sermpezis, P., Kotronis, V., Dainotti, A., and X.
+              Dimitropoulos, "A survey among network operators on BGP
+              prefix hijacking",  ACM SIGCOMM Computer Communication
+              Review 48, no. 1 (2018): 64-69., 2018,
+              <https://arxiv.org/pdf/1801.02918.pdf>.
+
+   [bloatware]
+              Gamba, G., Rashed, M., Razaghpanah, A., Tapiado, J., and
+              N. Vallina-Rodriguez, "An Analysis of Pre-installed
+              Android Software",  arXiv preprint arXiv:1905.02713
+              (2019)., 2019, <https://arxiv.org/pdf/1905.02713.pdf>.
+
    [cambridge]
               Isaak, J. and M. Hanna, "User Data Privacy: Facebook,
               Cambridge Analytica, and Privacy Protection",
@@ -589,6 +770,22 @@ Internet-Draft                     etm                          May 2019
               <https://www.ics.uci.edu/~seal/
               publications/2018ICSE_Hammad.pdf>.
 
+   [hijackdet]
+              Schlamp, J., Holz, R., Gasser, O., Korste, A., Jacquemart,
+              Q., Carle, G., and E. Biersack, "Investigating the nature
+              of routing anomalies: Closing in on subprefix hijacking
+              attacks",  International Workshop on Traffic Monitoring
+              and Analysis, pp. 173-187. Springer, Cham, 2015., 2015,
+              <https://www.net.in.tum.de/fileadmin/bibtex/publications/
+              papers/schlamp_TMA_1_2015.pdf>.
+
+
+
+Farrell                  Expires January 7, 2020               [Page 14]
+
+Internet-Draft                     etm                         July 2019
+
+
    [I-D.arkko-arch-internet-threat-model]
               Arkko, J., "Changes in the Internet Threat Model", draft-
               arkko-arch-internet-threat-model-00 (work in progress),
@@ -596,7 +793,13 @@ Internet-Draft                     etm                          May 2019
 
    [I-D.iab-protocol-maintenance]
               Thomson, M., "The Harmful Consequences of the Robustness
-              Principle", draft-iab-protocol-maintenance-02 (work in
+              Principle", draft-iab-protocol-maintenance-03 (work in
+              progress), May 2019.
+
+   [I-D.ietf-mls-architecture]
+              Omara, E., Beurdouche, B., Rescorla, E., Inguva, S., Kwon,
+              A., and A. Duric, "The Messaging Layer Security (MLS)
+              Architecture", draft-ietf-mls-architecture-02 (work in
               progress), March 2019.
 
    [I-D.ietf-tls-grease]
@@ -605,18 +808,7 @@ Internet-Draft                     etm                          May 2019
 
    [I-D.nottingham-for-the-users]
               Nottingham, M., "The Internet is for End Users", draft-
-              nottingham-for-the-users-07 (work in progress), March
-              2019.
-
-
-
-
-
-
-Farrell                 Expires November 2, 2019               [Page 11]
-
-Internet-Draft                     etm                          May 2019
-
+              nottingham-for-the-users-08 (work in progress), June 2019.
 
    [mailbug]  Englehardt, S., Han, J., and A. Narayanan, "I never signed
               up for this! Privacy implications of email tracking",
@@ -640,9 +832,28 @@ Internet-Draft                     etm                          May 2019
               DOI 10.17487/RFC3552, July 2003,
               <https://www.rfc-editor.org/info/rfc3552>.
 
+
+
+
+
+
+Farrell                  Expires January 7, 2020               [Page 15]
+
+Internet-Draft                     etm                         July 2019
+
+
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
+
+   [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
+              RFC 6749, DOI 10.17487/RFC6749, October 2012,
+              <https://www.rfc-editor.org/info/rfc6749>.
+
+   [RFC6819]  Lodderstedt, T., Ed., McGloin, M., and P. Hunt, "OAuth 2.0
+              Threat Model and Security Considerations", RFC 6819,
+              DOI 10.17487/RFC6819, January 2013,
+              <https://www.rfc-editor.org/info/rfc6819>.
 
    [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
@@ -663,17 +874,6 @@ Internet-Draft                     etm                          May 2019
               RFC 8240, DOI 10.17487/RFC8240, September 2017,
               <https://www.rfc-editor.org/info/rfc8240>.
 
-
-
-
-
-
-
-Farrell                 Expires November 2, 2019               [Page 12]
-
-Internet-Draft                     etm                          May 2019
-
-
    [RFC8404]  Moriarty, K., Ed. and A. Morton, Ed., "Effects of
               Pervasive Encryption on Operators", RFC 8404,
               DOI 10.17487/RFC8404, July 2018,
@@ -689,6 +889,14 @@ Internet-Draft                     etm                          May 2019
               (Euro USEC) 2018, 2018, <https://www.ndss-symposium.org/
               wp-content/uploads/2018/06/
               eurousec2018_16_Malkin_paper.pdf>.
+
+
+
+
+Farrell                  Expires January 7, 2020               [Page 16]
+
+Internet-Draft                     etm                         July 2019
+
 
    [sybil]    Viswanath, B., Post, A., Gummadi, K., and A. Mislove, "An
               analysis of social network-based sybil defenses", ACM
@@ -722,14 +930,6 @@ Internet-Draft                     etm                          May 2019
               Information, Communication and Society (2018): 1-20, 2018,
               <https://doi.org/10.1080/1369118X.2018.1486870>.
 
-
-
-
-Farrell                 Expires November 2, 2019               [Page 13]
-
-Internet-Draft                     etm                          May 2019
-
-
    [vpns]     Khan, M., DeBlasio, J., Voelker, G., Snoeren, A., Kanich,
               C., and N. Vallina-Rodrigue, "An empirical analysis of the
               commercial VPN ecosystem", ACM Internet Measurement
@@ -745,6 +945,15 @@ Internet-Draft                     etm                          May 2019
 
    [3] https://www.iab.org/activities/workshops/dedr-workshop/
 
+
+
+
+
+Farrell                  Expires January 7, 2020               [Page 17]
+
+Internet-Draft                     etm                         July 2019
+
+
    [4] https://www.nytimes.com/2018/10/20/us/politics/saudi-image-
        campaign-twitter.html
 
@@ -752,57 +961,69 @@ Internet-Draft                     etm                          May 2019
        smart-tvs-have-been-watching-users-and-transmitting-data-without-
        consent/
 
-   [6] https://security.stackexchange.com/questions/100577/creating-
+   [6] https://krebsonsecurity.com/2019/02/a-deep-dive-on-the-recent-
+       widespread-dns-hijacking-attacks/
+
+   [7] https://security.stackexchange.com/questions/100577/creating-
        botnet-cc-server-what-architecture-should-i-use-irc-http
 
-   [7] https://businessinsights.bitdefender.com/worst-amazon-breaches
+   [8] https://businessinsights.bitdefender.com/worst-amazon-breaches
 
-   [8] https://www.us-cert.gov/ncas/alerts/TA18-004A
+   [9] https://www.us-cert.gov/ncas/alerts/TA18-004A
 
-   [9] https://haveibeenpwned.com/Passwords
+   [10] https://haveibeenpwned.com/Passwords
 
-   [10] https://www.zdnet.com/article/how-hackers-stole-millions-of-
+   [11] https://www.zdnet.com/article/how-hackers-stole-millions-of-
         credit-card-records-from-target/
 
-   [11] https://www.wired.com/story/yahoo-breach-three-billion-accounts/
+   [12] https://www.wired.com/story/yahoo-breach-three-billion-accounts/
 
-   [12] https://www.pcmag.com/news/367319/facebook-stored-up-to-600m-
+   [13] https://www.pcmag.com/news/367319/facebook-stored-up-to-600m-
         user-passwords-in-plain-text
 
-   [13] https://www.zdnet.com/article/us-telcos-caught-selling-your-
+   [14] https://www.zdnet.com/article/us-telcos-caught-selling-your-
         location-data-again-senator-demands-new-laws/
 
-   [14] https://www.cnet.com/news/facebook-breach-affected-50-million-
+   [15] https://www.cnet.com/news/facebook-breach-affected-50-million-
         people/
 
-   [15] https://www.zdnet.com/article/millions-verizon-customer-records-
+   [16] https://www.zdnet.com/article/millions-verizon-customer-records-
         israeli-data/
 
-
-
-
-Farrell                 Expires November 2, 2019               [Page 14]
-
-Internet-Draft                     etm                          May 2019
-
-
-   [16] https://www.wsj.com/articles/google-exposed-user-data-feared-
+   [17] https://www.wsj.com/articles/google-exposed-user-data-feared-
         repercussions-of-disclosing-to-public-1539017194
 
-   [17] https://motherboard.vice.com/en_us/article/ywyz3x/hackers-could-
+   [18] https://motherboard.vice.com/en_us/article/ywyz3x/hackers-could-
         read-your-hotmail-msn-outlook-microsoft-customer-support
 
-   [18] https://gdpr-info.eu/art-15-gdpr/
+   [19] https://gdpr-info.eu/art-15-gdpr/
+
+
+
+
+
+
+
+
+Farrell                  Expires January 7, 2020               [Page 18]
+
+Internet-Draft                     etm                         July 2019
+
 
 Appendix A.  Change Log
 
    This isn't gonna end up as an RFC, but may as well be tidy...
 
-A.1.  Changes from -01 to -02
+A.1.  Changes from -02 to -03
+
+   o  Integrated some changes based on discussion with Ted, Jari and
+      Brian.
+
+A.2.  Changes from -01 to -02
 
    o  Oops - got an RFC number wrong in reference
 
-A.2.  Changes from -00 to -01
+A.3.  Changes from -00 to -01
 
    o  Made a bunch more edits and added more references
 
@@ -837,4 +1058,7 @@ Author's Address
 
 
 
-Farrell                 Expires November 2, 2019               [Page 15]
+
+
+
+Farrell                  Expires January 7, 2020               [Page 19]
